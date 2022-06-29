@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/tollbar"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/toolbar">
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/ten">
+
+            <RadioButton
+                android:id="@+id/text_MemberId"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Member Id"
+                android:buttonTint="@color/back2"
+                >
+
+            </RadioButton>
+
+            <RadioButton
+                android:id="@+id/text_NewMemberShip"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="New MemberShip"
+                android:buttonTint="@color/back2">
+
+            </RadioButton>
+
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/serach_Id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/deshbord_bg"
+            android:layout_margin="@dimen/fifteen"
+            android:padding="12dp"
+            android:drawablePadding="@dimen/fifteen"
+            android:hint="Serach Member Id"
+            android:drawableLeft="@drawable/baseline_search">
+
+        </EditText>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/userDetails"
+            android:orientation="vertical">
+
+            <include layout="@layout/userdetails"></include>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

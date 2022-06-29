@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/tollbar"></include>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:layout_below="@+id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/editMobileNo"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/five"
+                    android:layout_weight="1.5"
+                    android:hint="Enter Your Account Number"
+                    app:boxStrokeColor="@color/back2"
+                    app:hintTextColor="@color/back2">
+
+                    <EditText
+                        android:id="@+id/edit_MobileNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fifty"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:padding="@dimen/ten"
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/edittextsize" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_Show"
+                    style="@style/buttonback"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/five"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="0.5"
+                    android:padding="@dimen/five"
+                    android:text="Show"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textsize"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/blue">
+
+                </com.google.android.material.button.MaterialButton>
+
+
+            </LinearLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/editDate"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Enter Date"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_Date"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize"
+                    android:drawableRight="@drawable/calendar"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="@dimen/ten">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sms Allow"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize"
+                    android:textStyle="bold">
+
+                </TextView>
+
+                <RadioGroup
+                    android:id="@+id/radioGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/text_NewCustomer"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="yes"
+                        android:buttonTint="@color/back2"
+                        >
+
+                    </RadioButton>
+
+                    <RadioButton
+                        android:id="@+id/text_ExistingCustomer"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="No"
+                        android:buttonTint="@color/back2">
+
+                    </RadioButton>
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <Spinner
+                android:id="@+id/spinner_PaymentMode"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/forty_five"
+                android:layout_margin="@dimen/ten"
+                android:drawableRight="@drawable/ic_keyboard_arrow_down_black_24dp"
+                android:gravity="center_vertical"
+                android:spinnerMode="dropdown"
+                android:paddingLeft="@dimen/two"
+                android:paddingRight="@dimen/two"
+                android:text="Please Select Your Area"
+                android:textColor="#25297A"
+                android:textSize="@dimen/fifteen"
+                android:background="@drawable/edittextback" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/editVocherNumber"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Vocher Number"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_VocherNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Spinner
+                android:id="@+id/spinner_PaidBy"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/forty_five"
+                android:layout_margin="@dimen/ten"
+                android:drawableRight="@drawable/ic_keyboard_arrow_down_black_24dp"
+                android:gravity="center_vertical"
+                android:spinnerMode="dropdown"
+                android:paddingLeft="@dimen/two"
+                android:paddingRight="@dimen/two"
+                android:text="Please Select Your Area"
+                android:textColor="#25297A"
+                android:textSize="@dimen/fifteen"
+                android:background="@drawable/edittextback" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/editDepositAmount"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Deposit Amount"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_DepositAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="3"
+                android:layout_marginTop="@dimen/thirty"
+                android:layout_marginLeft="@dimen/five"
+                android:layout_marginRight="@dimen/five"
+                android:layout_marginBottom="@dimen/fifteen">
+
+                <Button
+                    android:id="@+id/btn_Save"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/five"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:padding="@dimen/five"
+                    android:text="Save"
+                    android:background="@drawable/button_bg"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textsize"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/blue">
+
+                </Button>
+
+                <Button
+                    android:id="@+id/btn_Reset"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/five"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:padding="@dimen/five"
+                    android:text="Reset"
+                    android:background="@drawable/button_bg"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textsize"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/red">
+
+                </Button>
+
+                <Button
+                    android:id="@+id/btn_Cancel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/five"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:padding="@dimen/five"
+                    android:text="Cancel"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textsize"
+                    android:textStyle="bold"
+                    android:background="@drawable/button_bg"
+                    app:backgroundTint="@color/primary">
+
+                </Button>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</RelativeLayout>

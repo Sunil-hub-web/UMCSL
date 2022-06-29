@@ -1,0 +1,1558 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:text="Personal Details"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/twenty"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Account Number"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_AccountNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Date Of Joining"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_DateOfJoining"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="date"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Applicant Name"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_ApplicantName"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Age"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_Age"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Father's/Husband's Nmae"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_FatherHusbandName"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize"
+                    tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Mark Of Identity"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_MarkOfIdentity"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Gender"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_Gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Status"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_Status"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Occupation"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_Occupation"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize"
+                    tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/twenty"
+                android:text="Communication Details"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/twenty"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:text="Present Address"
+                android:textColor="@color/back3"
+                android:textSize="@dimen/textsize"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Address"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_Address"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Distinct"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_Distinct"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="City"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_City"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="State"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_State"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Country"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_Country"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Pin code"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_Pincode"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/ten"
+                    android:layout_marginTop="@dimen/ten"
+                    android:layout_marginBottom="@dimen/ten"
+                    android:layout_weight="0.8"
+                    android:text="Permant Address"
+                    android:textColor="@color/back3"
+                    android:textSize="@dimen/textsize"
+                    android:textStyle="bold">
+
+                </TextView>
+
+                <CheckBox
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ten"
+                    android:layout_marginRight="@dimen/five"
+                    android:layout_marginBottom="@dimen/ten"
+                    android:layout_weight="1.2"
+                    android:backgroundTint="@color/back2"
+                    android:text="Same As Present Address"
+                    android:textSize="@dimen/textsize">
+
+
+                </CheckBox>
+
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Address"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_Address1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Distinct"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_Distinct1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="City"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_City1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="State"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_State1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Country"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_Country1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Pin code"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_Pincode1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Contact Number"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_ContactNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Email Id"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_EmailId"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="textEmailAddress"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Mobile Number"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_MobileNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/twenty"
+                android:text="Kyc Details"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/twenty"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <Spinner
+                android:id="@+id/spinner_SelectidProof"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/forty_five"
+                android:layout_margin="@dimen/ten"
+                android:background="@drawable/edittextback"
+                android:drawableRight="@drawable/ic_keyboard_arrow_down_black_24dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/two"
+                android:paddingRight="@dimen/two"
+                android:spinnerMode="dropdown"
+                android:text="Please Select Your Area"
+                android:textColor="@color/back2"
+                android:textSize="@dimen/fifteen" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Identity proof Number"
+                app:boxStrokeColor="@color/white"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_IdentityproofNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/editMobileNo"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/five"
+                    android:layout_weight="1.2"
+                    android:hint="Selected Identity Proof"
+                    app:boxStrokeColor="@color/white"
+                    app:hintTextColor="@color/back2">
+
+                    <EditText
+                        android:id="@+id/edit_IdentityProofFile"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fifty"
+                        android:focusable="false"
+                        android:inputType="text"
+                        android:maxLength="10"
+                        android:padding="@dimen/ten"
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/edittextsize" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_ChooseFileidentity"
+                    style="@style/buttonback"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/five"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="0.8"
+                    android:text="Choose File"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/twelve_size"
+                    app:backgroundTint="#E6E8E7">
+
+                </com.google.android.material.button.MaterialButton>
+
+
+            </LinearLayout>
+
+            <Spinner
+                android:id="@+id/spinner_AddressProof"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/forty_five"
+                android:layout_margin="@dimen/ten"
+                android:background="@drawable/edittextback"
+                android:drawableRight="@drawable/ic_keyboard_arrow_down_black_24dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/two"
+                android:paddingRight="@dimen/two"
+                android:spinnerMode="dropdown"
+                android:text="Please Select Your Area"
+                android:textColor="@color/back2"
+                android:textSize="@dimen/fifteen" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Address Proof Number"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_AddressProofNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/five"
+                    android:layout_weight="1.2"
+                    android:hint="Selected Address Proof"
+                    app:boxStrokeColor="@color/back2"
+                    app:hintTextColor="@color/back2">
+
+                    <EditText
+                        android:id="@+id/edit_AddressProofFile"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fifty"
+                        android:focusable="false"
+                        android:inputType="text"
+                        android:maxLength="10"
+                        android:padding="@dimen/ten"
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/edittextsize" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_ChooseFileAddress"
+                    style="@style/buttonback"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/five"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="0.8"
+                    android:text="Choose File"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/twelve_size"
+                    app:backgroundTint="#E6E8E7">
+
+                </com.google.android.material.button.MaterialButton>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/twenty"
+                android:text="Document Details"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/twenty"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/five"
+                    android:layout_weight="1.2"
+                    android:hint="Selected Photo"
+                    app:boxStrokeColor="@color/back2"
+                    app:hintTextColor="@color/back2">
+
+                    <EditText
+                        android:id="@+id/edit_Photo"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fifty"
+                        android:focusable="false"
+                        android:inputType="text"
+                        android:maxLength="10"
+                        android:padding="@dimen/ten"
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/edittextsize" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_ChooseFilePhoto"
+                    style="@style/buttonback"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/five"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="0.8"
+                    android:text="Choose File"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/twelve_size"
+                    app:backgroundTint="#E6E8E7">
+
+                </com.google.android.material.button.MaterialButton>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:text="View Photo"
+                android:textColor="@color/back3"
+                android:textSize="@dimen/textsize"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_viewUserPhoto"
+                android:layout_width="@dimen/two_hundred"
+                android:layout_height="@dimen/hundred_fifty"
+                android:layout_gravity="center"
+                android:src="@drawable/profile">
+
+            </de.hdodenhof.circleimageview.CircleImageView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/five"
+                    android:layout_weight="1.2"
+                    android:hint="Selected Signature"
+                    app:boxStrokeColor="@color/back2"
+                    app:hintTextColor="@color/back2">
+
+                    <EditText
+                        android:id="@+id/edit_Signature"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fifty"
+                        android:focusable="false"
+                        android:inputType="text"
+                        android:maxLength="10"
+                        android:padding="@dimen/ten"
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/edittextsize" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_ChooseFileSignature"
+                    style="@style/buttonback"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/five"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="0.8"
+                    android:text="Choose File"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/twelve_size"
+                    app:backgroundTint="#E6E8E7">
+
+                </com.google.android.material.button.MaterialButton>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:text="View Signature"
+                android:textColor="@color/back3"
+                android:textSize="@dimen/textsize"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <ImageView
+                android:id="@+id/img_viewUserSignature"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/hundred"
+                android:scaleType="centerInside"
+                android:src="@drawable/signature">
+
+            </ImageView>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/twenty"
+                android:text="Deposite Details"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/twenty"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Daliy Deposite Amount"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_DepositeAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/twenty"
+                android:text="Nominee Details"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/twenty"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:text="1st Nominee Details"
+                android:textColor="@color/back3"
+                android:textSize="@dimen/textsize"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="1st Nominee Name"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_NomineeName1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Relation"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_Relation"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Date Of Birth"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_DateOfBirth"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="datetime"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Propation(%)"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_Propation1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/five"
+                    android:layout_weight="1.2"
+                    android:hint="Selected Signature"
+                    app:boxStrokeColor="@color/back2"
+                    app:hintTextColor="@color/back2">
+
+                    <EditText
+                        android:id="@+id/edit_SignatureNominee"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fifty"
+                        android:focusable="false"
+                        android:inputType="text"
+                        android:maxLength="10"
+                        android:padding="@dimen/ten"
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/edittextsize" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_ChooseFileNominee"
+                    style="@style/buttonback"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/five"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="0.8"
+                    android:text="Choose File"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/twelve_size"
+                    app:backgroundTint="#E6E8E7">
+
+                </com.google.android.material.button.MaterialButton>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:text="View Signature"
+                android:textColor="@color/back3"
+                android:textSize="@dimen/textsize"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <ImageView
+                android:id="@+id/img_viewSignatureNominee"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/hundred"
+                android:scaleType="centerInside"
+                android:src="@drawable/signature">
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:text="2nd Nominee Details"
+                android:textColor="@color/back3"
+                android:textSize="@dimen/textsize"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="2nd Nominee Name"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_NomineeName2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Relation"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_Relation1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Date Of Birth"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_DateOfBirth1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="datetime"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Propation(%)"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_Propation2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/five"
+                    android:layout_weight="1.2"
+                    android:hint="Selected Signature"
+                    app:boxStrokeColor="@color/back2"
+                    app:hintTextColor="@color/back2">
+
+                    <EditText
+                        android:id="@+id/edit_SignatureNominee1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fifty"
+                        android:inputType="text"
+                        android:maxLength="10"
+                        android:padding="@dimen/ten"
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/edittextsize" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_ChooseFileNominee1"
+                    style="@style/buttonback"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/five"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="0.8"
+                    android:focusable="false"
+                    android:text="Choose File"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/twelve_size"
+                    app:backgroundTint="#E6E8E7">
+
+                </com.google.android.material.button.MaterialButton>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:text="View Signature"
+                android:textColor="@color/back3"
+                android:textSize="@dimen/textsize"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <ImageView
+                android:id="@+id/img_viewSignatureNominee1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/hundred"
+                android:scaleType="centerInside"
+                android:src="@drawable/signature">
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:text="Introducer Details"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/twenty"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:text="First Introducer Details"
+                android:textColor="@color/back3"
+                android:textSize="@dimen/textsize"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Enter Account Number"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_IntroducerAccountNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Name Of The 1st introducer"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_NameOfintroducer1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="date"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/five"
+                    android:layout_weight="1.2"
+                    android:hint="Selected Signature"
+                    app:boxStrokeColor="@color/back2"
+                    app:hintTextColor="@color/back2">
+
+                    <EditText
+                        android:id="@+id/edit_IntroducerSignature1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fifty"
+                        android:focusable="false"
+                        android:inputType="text"
+                        android:maxLength="10"
+                        android:padding="@dimen/ten"
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/edittextsize" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_ChooseFileIntroducer1"
+                    style="@style/buttonback"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/five"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="0.8"
+                    android:text="Choose File"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/twelve_size"
+                    app:backgroundTint="#E6E8E7">
+
+                </com.google.android.material.button.MaterialButton>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:text="View Signature"
+                android:textColor="@color/back3"
+                android:textSize="@dimen/textsize"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <ImageView
+                android:id="@+id/img_viewIntroducerSignature1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/hundred"
+                android:scaleType="centerInside"
+                android:src="@drawable/signature">
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:text="Second Introducer Details"
+                android:textColor="@color/back3"
+                android:textSize="@dimen/textsize"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Enter Account Number"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_IntroducerAccountNo1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Name Of The 2nd introducer"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_NameOfintroducer2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="date"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/five"
+                    android:layout_weight="1.2"
+                    android:hint="Selected Signature"
+                    app:boxStrokeColor="@color/back2"
+                    app:hintTextColor="@color/back2">
+
+                    <EditText
+                        android:id="@+id/edit_IntroducerSignature2"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fifty"
+                        android:focusable="false"
+                        android:inputType="text"
+                        android:maxLength="10"
+                        android:padding="@dimen/ten"
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/edittextsize" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_ChooseFileIntroducer2"
+                    style="@style/buttonback"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/five"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="0.8"
+                    android:text="Choose File"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/twelve_size"
+                    app:backgroundTint="#E6E8E7">
+
+                </com.google.android.material.button.MaterialButton>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:text="View Signature"
+                android:textColor="@color/back3"
+                android:textSize="@dimen/textsize"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <ImageView
+                android:id="@+id/img_viewIntroducerSignature2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/hundred"
+                android:scaleType="centerInside"
+                android:src="@drawable/signature">
+
+            </ImageView>
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_signin"
+                style="@style/buttonback"
+                android:layout_width="@dimen/hundred_fifty"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/ten"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="@dimen/ten"
+                android:layout_marginBottom="10dp"
+                android:text="Save"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textsize"
+                android:textStyle="bold"
+                app:backgroundTint="@color/blue"></com.google.android.material.button.MaterialButton>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>

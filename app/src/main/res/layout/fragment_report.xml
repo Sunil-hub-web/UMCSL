@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/tollbar"></include>
+
+    <LinearLayout
+        android:id="@+id/lin_datefromto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:layout_below="@+id/toolbar"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/FromDate"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/five"
+            android:hint="From Date"
+            app:boxStrokeColor="@color/back2"
+            app:hintTextColor="@color/back2">
+
+            <EditText
+                android:id="@+id/edit_FromDate"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/forty_five"
+                android:inputType="number"
+                android:maxLength="10"
+                android:padding="@dimen/ten"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/textsize"
+                android:drawableRight="@drawable/calendar"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ToDate"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/five"
+            android:hint="To Date"
+            app:boxStrokeColor="@color/back2"
+            app:hintTextColor="@color/back2">
+
+            <EditText
+                android:id="@+id/edit_ToDate"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/forty_five"
+                android:inputType="number"
+                android:maxLength="10"
+                android:padding="@dimen/ten"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/textsize"
+                android:drawableRight="@drawable/calendar"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lin_datefromto"
+        android:layout_marginTop="@dimen/ten"
+        android:id="@+id/recyclerReport">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</RelativeLayout>

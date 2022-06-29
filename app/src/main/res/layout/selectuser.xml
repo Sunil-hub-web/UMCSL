@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            android:text="Introducer Details"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/twenty"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            android:text="First Introducer Details"
+            android:textColor="@color/back3"
+            android:textSize="@dimen/textsize"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            android:hint="Enter Account Number"
+            app:boxStrokeColor="@color/back2"
+            app:hintTextColor="@color/back2">
+
+            <EditText
+                android:id="@+id/edit_IntroducerAccountNo"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty"
+                android:inputType="number"
+                android:maxLength="10"
+                android:padding="@dimen/ten"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/edittextsize"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            android:hint="Name Of The 1st introducer"
+            app:boxStrokeColor="@color/back2"
+            app:hintTextColor="@color/back2">
+
+            <EditText
+                android:id="@+id/edit_NameOfintroducer1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty"
+                android:inputType="date"
+                android:maxLength="10"
+                android:padding="@dimen/ten"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/edittextsize"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/five"
+                android:layout_weight="1.2"
+                android:hint="Selected Signature"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_IntroducerSignature1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:focusable="false"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_ChooseFileIntroducer1"
+                style="@style/buttonback"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/five"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="0.8"
+                android:text="Choose File"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:textSize="@dimen/twelve_size"
+                app:backgroundTint="#E6E8E7">
+
+            </com.google.android.material.button.MaterialButton>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            android:text="View Signature"
+            android:textColor="@color/back3"
+            android:textSize="@dimen/textsize"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <ImageView
+            android:id="@+id/img_viewIntroducerSignature1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/hundred"
+            android:src="@drawable/signature"
+            android:scaleType="centerInside">
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            android:text="Second Introducer Details"
+            android:textColor="@color/back3"
+            android:textSize="@dimen/textsize"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            android:hint="Enter Account Number"
+            app:boxStrokeColor="@color/back2"
+            app:hintTextColor="@color/back2">
+
+            <EditText
+                android:id="@+id/edit_IntroducerAccountNo1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty"
+                android:inputType="number"
+                android:maxLength="10"
+                android:padding="@dimen/ten"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/edittextsize"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            android:hint="Name Of The 2nd introducer"
+            app:boxStrokeColor="@color/back2"
+            app:hintTextColor="@color/back2">
+
+            <EditText
+                android:id="@+id/edit_NameOfintroducer2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty"
+                android:inputType="date"
+                android:maxLength="10"
+                android:padding="@dimen/ten"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/edittextsize"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/five"
+                android:layout_weight="1.2"
+                android:hint="Selected Signature"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_IntroducerSignature2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:focusable="false"
+                    android:textSize="@dimen/edittextsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_ChooseFileIntroducer2"
+                style="@style/buttonback"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/five"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="0.8"
+                android:text="Choose File"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:textSize="@dimen/twelve_size"
+                app:backgroundTint="#E6E8E7">
+
+            </com.google.android.material.button.MaterialButton>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/ten"
+            android:text="View Signature"
+            android:textColor="@color/back3"
+            android:textSize="@dimen/textsize"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <ImageView
+            android:id="@+id/img_viewIntroducerSignature2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/hundred"
+            android:src="@drawable/signature"
+            android:scaleType="centerInside">
+
+        </ImageView>
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/home_p"
+        android:contentDescription="Home"
+        app:cnb_backgroundColor="@color/white"
+        app:cnb_iconColor="@color/back2"
+        app:cnb_iconTintMode="src_in"
+        app:cnb_textColor="@color/back2"/>
+
+    <item
+        android:id="@+id/creation"
+        android:title="Acc Creation"
+        android:icon="@drawable/baseline_account_balance"
+        android:contentDescription="Home"
+        app:cnb_backgroundColor="@color/white"
+        app:cnb_iconColor="@color/back2"
+        app:cnb_iconTintMode="src_in"
+        app:cnb_textColor="@color/back2"/>
+
+    <item
+        android:id="@+id/collectAmount"
+        android:title="Collect Amount"
+        android:icon="@drawable/baseline_account_balance_wallet"
+        android:contentDescription="Home"
+        app:cnb_backgroundColor="@color/white"
+        app:cnb_iconColor="@color/back2"
+        app:cnb_iconTintMode="src_in"
+        app:cnb_textColor="@color/back2"/>
+
+    <item
+        android:id="@+id/report"
+        android:title="Report"
+        android:icon="@drawable/baseline_report"
+        android:contentDescription="Home"
+        app:cnb_backgroundColor="@color/white"
+        app:cnb_iconColor="@color/back2"
+        app:cnb_iconTintMode="src_in"
+        app:cnb_textColor="@color/back2"/>
+
+    <item
+        android:id="@+id/profile"
+        android:title="Profile"
+        android:icon="@drawable/baseline_account_circle"
+        android:contentDescription="Home"
+        app:cnb_backgroundColor="@color/white"
+        app:cnb_iconColor="@color/back2"
+        app:cnb_iconTintMode="src_in"
+        app:cnb_textColor="@color/back2"/>
+
+</menu>
