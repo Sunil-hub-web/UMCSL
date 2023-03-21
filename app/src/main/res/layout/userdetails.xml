@@ -1536,7 +1536,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_signin"
                 style="@style/buttonback"
-                android:layout_width="@dimen/hundred_fifty"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="@dimen/ten"
@@ -1548,7 +1548,6 @@
                 android:textSize="@dimen/textsize"
                 android:textStyle="bold"
                 app:backgroundTint="@color/blue"></com.google.android.material.button.MaterialButton>
-
 
         </LinearLayout>
 

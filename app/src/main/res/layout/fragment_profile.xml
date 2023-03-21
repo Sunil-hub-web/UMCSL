@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,18 +24,18 @@
                 android:id="@+id/image"
                 android:layout_width="@dimen/twenty_five"
                 android:layout_height="@dimen/twenty_five"
-                android:src="@drawable/edit"
-                android:layout_marginRight="@dimen/ten">
+                android:layout_marginRight="@dimen/ten"
+                android:src="@drawable/edit">
 
 
             </ImageView>
 
             <TextView
-                android:layout_toRightOf="@+id/image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Edit"
                 android:layout_marginRight="@dimen/ten"
+                android:layout_toRightOf="@+id/image"
+                android:text="Edit"
                 android:textColor="@color/black"
                 android:textSize="@dimen/twenty">
 
@@ -45,22 +45,22 @@
         </RelativeLayout>
 
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <!--<de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_image"
             android:layout_width="@dimen/hundred_twenty"
             android:layout_height="@dimen/hundred_twenty"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/twenty"
             android:src="@drawable/profileimage"
-            app:civ_border_width="@dimen/five"/>
+            app:civ_border_width="@dimen/five"/>-->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginLeft="@dimen/ten"
             android:layout_marginTop="@dimen/thirty"
-            android:layout_marginRight="@dimen/ten">
+            android:layout_marginRight="@dimen/ten"
+            android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -78,9 +78,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="phone"
-                    android:text="Sunil Kumar dash"
-                    android:textColor="#4D4D4E"
                     android:padding="@dimen/ten"
+                    android:textColor="#4D4D4E"
                     android:textSize="@dimen/edittextsize" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -101,9 +100,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="phone"
-                    android:text="+91 1234567890"
-                    android:textColor="#4D4D4E"
                     android:padding="@dimen/ten"
+                    android:textColor="#4D4D4E"
                     android:textSize="@dimen/edittextsize" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -124,15 +122,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="textEmailAddress"
-                    android:text="sunil@gmail.com"
-                    android:textColor="#4D4D4E"
                     android:padding="@dimen/ten"
+                    android:enabled="false"
+                    android:textColor="#4D4D4E"
                     android:textSize="@dimen/edittextsize" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
-
 
 
     </LinearLayout>
