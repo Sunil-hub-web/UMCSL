@@ -32,7 +32,7 @@ public class CollectAmountFragment extends Fragment {
     String paidBy[] = {"--Paid By--","Self","Relatives","Others"};
     String paymentMode[] = {"--Payment Mode--","Online","Cash"};
     Button btn_Save,btn_Show;
-    EditText edit_Date;
+    EditText edit_Date,edit_AccountNo;
     TextInputLayout editDate;
     int year, month, day, hour, minute;
     String date,time;
@@ -54,6 +54,7 @@ public class CollectAmountFragment extends Fragment {
         btn_Show = view.findViewById(R.id.btn_Show);
         edit_Date = view.findViewById(R.id.edit_Date);
         editDate = view.findViewById(R.id.editDate);
+        edit_AccountNo = view.findViewById(R.id.edit_AccountNo);
 
         name_text.setText("Collect Amount");
 
@@ -85,6 +86,9 @@ public class CollectAmountFragment extends Fragment {
 
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 ShowAccount showAccount = new ShowAccount();
+                Bundle bundle=new Bundle();
+                bundle.putString("product_id", edit_AccountNo.getText().toString().trim());
+                showAccount.setArguments(bundle);
                 fragmentTransaction.replace(R.id.nav_host_fragment,showAccount);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();

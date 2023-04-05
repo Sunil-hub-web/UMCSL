@@ -1,6 +1,7 @@
 package in.co.fragment;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -39,6 +41,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.Calendar;
 
 import in.co.extra.Appurl;
 import in.co.umcsl.DeshBoard;
@@ -47,11 +50,13 @@ import in.co.umcsl.R;
 
 public class AccountCreationFragment extends Fragment {
     RadioGroup radioGroup;
+    DatePickerDialog datePicker;
     RadioButton text_MemberId, text_NewMemberShip, memberShipDetails;
     LinearLayout userDetails,serachMemberId;
     EditText edit_IdentityProofFile, edit_AddressProofFile, edit_Photo, edit_Signature, edit_SignatureNominee,edit_AccountNo,
             edit_SignatureNominee1, edit_IntroducerSignature2, edit_IntroducerSignature1,edit_serachId,edit_DateOfJoining,
-            edit_ApplicantName,edit_Age,edit_FatherHusbandName,edit_MarkOfIdentity,edit_Gender,edit_Status,edit_Occupation;
+            edit_ApplicantName,edit_Age,edit_FatherHusbandName,edit_MarkOfIdentity,edit_Gender,edit_Status,edit_Occupation,
+            edit_DepositeAmt,edit_Address,edit_ContactNo,edit_Relation,edit_NomineeName1;
     Spinner spinner_SelectidProof, spinner_AddressProof;
     String[] addressProofName = {"-Document Proof Name-", "Driving License", "Adhaar(UID)", "Passport", "voter id"};
     MaterialButton btn_ChooseFileidentity, btn_ChooseFileAddress, btn_ChooseFilePhoto, btn_ChooseFileSignature,
@@ -59,12 +64,12 @@ public class AccountCreationFragment extends Fragment {
     ImageView img_viewUserPhoto, img_viewUserSignature, img_viewSignatureNominee, img_viewSignatureNominee1;
 
     public static final int IMAGE_CODE = 1;
-
     String imageSelect,AccountNumber,Active,CreatedDate,DOB,Email,FatherHusbandName,MemberId,MemberName,Message,
-            Mobilenumber,Status,message;
-
+            Mobilenumber,Status,message,Id,Name,Email1,Message1,Mobilenumber1,Status1,Address,str_AccountNo,str_DateOfJoining,
+            str_ApplicantName,str_Age,str_Gender,str_ContactNo,str_DepositeAmt,str_Address,str_FatherName,str_Relation,str_NomineeName1;
     ActivityResultLauncher<Intent> resultLauncher;
 
+    Button btn_signin;
 
     @Nullable
     @Override
@@ -112,11 +117,42 @@ public class AccountCreationFragment extends Fragment {
                         userDetails.setVisibility(View.VISIBLE);
                         message = "MemberId";
 
+                        edit_AccountNo.setText("");
+                        edit_DateOfJoining.setText("");
+                        edit_ApplicantName.setText("");
+                        edit_Age.setText("");
+                        edit_FatherHusbandName.setText("");
+                        edit_Status.setText("");
+                        edit_Address.setText("");
+
+
+
                     } else if (str_radioButton.equals("New MemberShip")) {
 
                         serachMemberId.setVisibility(View.GONE);
                         userDetails.setVisibility(View.VISIBLE);
-                        message = "";
+                        message = "MemberShip";
+
+                        edit_AccountNo.setText("");
+                        edit_DateOfJoining.setText("");
+                        edit_ApplicantName.setText("");
+                        edit_Age.setText("");
+                        edit_FatherHusbandName.setText("");
+                        edit_Status.setText("");
+                        edit_Address.setText("");
+
+
+                       /* str_AccountNo = edit_AccountNo.getText().toString().trim();
+                        str_DateOfJoining = edit_DateOfJoining.getText().toString().trim();
+                        str_ApplicantName = edit_ApplicantName.getText().toString().trim();
+                        str_Age = edit_Age.getText().toString().trim();
+                        str_Gender = edit_Gender.getText().toString().trim();
+                        str_ContactNo = edit_ContactNo.getText().toString().trim();
+                        str_DepositeAmt = edit_DepositeAmt.getText().toString().trim();
+
+
+
+                        accountCreation(str_AccountNo,str_DateOfJoining,str_ApplicantName,str_Age,str_Gender,str_ContactNo,str_DepositeAmt);*/
                     }
 
                 }
@@ -138,6 +174,38 @@ public class AccountCreationFragment extends Fragment {
                         String memberId = edit_serachId.getText().toString().trim();
                         getMemberDetails(memberId);
                     }
+                }
+            }
+        });
+
+        btn_signin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+                if (edit_NomineeName1.getText().toString().trim().equals("")){
+
+                    Toast.makeText(getActivity(), "Write Your Nominee Name", Toast.LENGTH_SHORT).show();
+
+                } else if (edit_Relation.getText().toString().trim().equals("")) {
+
+                    Toast.makeText(getActivity(), "Write Your Relation", Toast.LENGTH_SHORT).show();
+
+                }else{
+
+                    str_AccountNo = edit_AccountNo.getText().toString().trim();
+                    str_DateOfJoining = edit_DateOfJoining.getText().toString().trim();
+                    str_ApplicantName = edit_ApplicantName.getText().toString().trim();
+                    str_Age = edit_Age.getText().toString().trim();
+                    str_Gender = edit_Gender.getText().toString().trim();
+                    str_ContactNo = edit_ContactNo.getText().toString().trim();
+                    str_DepositeAmt = edit_DepositeAmt.getText().toString().trim();
+                    str_Address = edit_Address.getText().toString().trim();
+                    str_FatherName = edit_FatherHusbandName.getText().toString().trim();
+                    str_NomineeName1 = edit_NomineeName1.getText().toString().trim();
+                    str_Relation = edit_Relation.getText().toString().trim();
+
+                    accountCreation(str_AccountNo,str_DateOfJoining,str_ApplicantName,str_Age,str_FatherName,str_Address,
+                            str_Gender,str_NomineeName1,str_Relation,str_ContactNo,str_DepositeAmt);
                 }
             }
         });
@@ -288,6 +356,32 @@ public class AccountCreationFragment extends Fragment {
             }
         });
 
+        edit_DateOfJoining.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final Calendar calendar = Calendar.getInstance();
+                final int day = calendar.get(Calendar.DAY_OF_MONTH);
+                final int year = calendar.get(Calendar.YEAR);
+                final int month = calendar.get(Calendar.MONTH);
+
+                datePicker = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(android.widget.DatePicker view, int year, int month, int dayOfMonth) {
+                        // adding the selected date in the edittext
+                        //  binding.dojshg.setText(dayOfMonth + "-" + (month + 1) + "-" + year);
+                        edit_DateOfJoining.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
+                        int yearr = Calendar.getInstance().get(Calendar.YEAR);
+                        int finalage = yearr - year;
+                    }
+                }, year, month, day);
+
+                datePicker.getDatePicker().setMaxDate(System.currentTimeMillis() - 1000);
+                datePicker.show();
+
+            }
+        });
+
 
         return view;
     }
@@ -336,7 +430,12 @@ public class AccountCreationFragment extends Fragment {
         edit_Occupation = view.findViewById(R.id.edit_Occupation);
         serachMemberId = view.findViewById(R.id.serachMemberId);
         edit_AccountNo = view.findViewById(R.id.edit_AccountNo);
-
+        btn_signin = view.findViewById(R.id.btn_signin);
+        edit_DepositeAmt = view.findViewById(R.id.edit_DepositeAmt);
+        edit_Address = view.findViewById(R.id.edit_Address);
+        edit_ContactNo = view.findViewById(R.id.edit_ContactNo);
+        edit_Relation = view.findViewById(R.id.edit_Relation);
+        edit_NomineeName1 = view.findViewById(R.id.edit_NomineeName1);
     }
 
     public void selectImage() {
@@ -370,9 +469,10 @@ public class AccountCreationFragment extends Fragment {
 
                     AccountNumber = jsonObject_logindata.getString("AccountNumber");
                     Active = jsonObject_logindata.getString("Active");
+                    Address = jsonObject_logindata.getString("Address");
                     CreatedDate = jsonObject_logindata.getString("CreatedDate");
                     DOB = jsonObject_logindata.getString("DOB");
-                    Email = jsonObject_logindata.getString("Email");
+                    //Email = jsonObject_logindata.getString("Email");
                     FatherHusbandName = jsonObject_logindata.getString("FatherHusbandName");
                     MemberId = jsonObject_logindata.getString("MemberId");
                     MemberName = jsonObject_logindata.getString("MemberName");
@@ -394,13 +494,15 @@ public class AccountCreationFragment extends Fragment {
                     edit_Age.setText(DOB);
                     edit_FatherHusbandName.setText(FatherHusbandName);
                     edit_Status.setText(Status);
+                    edit_Address.setText(Address);
 
-                    edit_AccountNo.setEnabled(false);
-                    edit_DateOfJoining.setEnabled(false);
-                    edit_ApplicantName.setEnabled(false);
-                    edit_Age.setEnabled(false);
-                    edit_FatherHusbandName.setEnabled(false);
-                    edit_Status.setEnabled(false);
+//                    edit_AccountNo.setEnabled(false);
+//                    edit_DateOfJoining.setEnabled(false);
+//                    edit_ApplicantName.setEnabled(false);
+//                    edit_Age.setEnabled(false);
+//                    edit_FatherHusbandName.setEnabled(false);
+//                    edit_Status.setEnabled(false);
+//                    edit_Address.setEnabled(false);
 
                 }
 
@@ -410,6 +512,69 @@ public class AccountCreationFragment extends Fragment {
             }
 
 
+
+        },error -> {
+
+            progressDialog.dismiss();
+            Toast.makeText(getContext(), ""+error, Toast.LENGTH_SHORT).show();
+
+        });
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(3000,3,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
+
+    }
+
+    public void accountCreation(String Accountno,String DateOfJoining,String ApplicantName,String Age,
+                                String FathersName,String PresentAddress,String Gender,
+                                String Mobileno,String DepositeAmt,String Nominee,String relation){
+
+        ProgressDialog progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Login Please Wait....");
+        progressDialog.show();
+
+        String createAcc = Appurl.CreateMemberAccount+"Accountno="+Accountno+"&DateOfJoining="
+                +DateOfJoining+"&ApplicantName="+ApplicantName+"&Age="+Age+"&FathersName="
+                +FathersName+"&PresentAddress="+PresentAddress+"&Gender="+Gender+"&Mobileno="
+                +Mobileno+"&Nominee="+Nominee+"&relation="+relation+"&DepositeAmt="+DepositeAmt;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET,createAcc, response -> {
+
+            progressDialog.dismiss();
+
+            try {
+                JSONObject jsonObject = new JSONObject(response);
+
+                String SCreateMemberAccountResult = jsonObject.getString("SCreateDailyAccountResult");
+                JSONArray jsonArray_login = new JSONArray(SCreateMemberAccountResult);
+
+                for (int i= 0;i<jsonArray_login.length();i++){
+
+                    JSONObject jsonObject_logindata = jsonArray_login.getJSONObject(0);
+
+                    Email1 = jsonObject_logindata.getString("Email");
+                    Id = jsonObject_logindata.getString("Id");
+                    Message1 = jsonObject_logindata.getString("Message");
+                    Mobilenumber1 = jsonObject_logindata.getString("Mobilenumber");
+                    Name = jsonObject_logindata.getString("Name");
+                    Status1 = jsonObject_logindata.getString("Status");
+
+                }
+
+                if (Status1.equals("0")){
+
+                    Toast.makeText(getContext(), Message1, Toast.LENGTH_SHORT).show();
+
+                }else{
+
+                    Toast.makeText(getContext(), Message1, Toast.LENGTH_SHORT).show();
+                }
+
+
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
 
         },error -> {
 

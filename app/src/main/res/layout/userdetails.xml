@@ -41,7 +41,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="number"
-                    android:maxLength="10"
+                 
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -62,10 +62,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="date"
-                    android:maxLength="10"
+
                     android:padding="@dimen/ten"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:textIsSelectable="false"
                     android:textColor="@color/textColor"
-                    android:textSize="@dimen/edittextsize" />
+                    android:textSize="@dimen/edittextsize"
+                    android:drawableRight="@drawable/calendar"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -83,7 +87,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-                    android:maxLength="10"
+
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -104,7 +108,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="number"
-                    android:maxLength="10"
+
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -125,7 +129,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-                    android:maxLength="10"
+
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize"
@@ -147,7 +151,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-                    android:maxLength="10"
+
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -168,7 +172,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-                    android:maxLength="10"
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -189,7 +192,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-                    android:maxLength="10"
+
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -210,11 +213,31 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-                    android:maxLength="10"
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize"
                     tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Deposite Amount"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_DepositeAmt"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="text"
+
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -254,7 +277,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-                    android:maxLength="10"
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -275,7 +297,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-                    android:maxLength="10"
+
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -296,7 +318,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-                    android:maxLength="10"
+
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -317,7 +339,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-                    android:maxLength="10"
+
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -338,7 +360,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-                    android:maxLength="10"
+
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -359,7 +381,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="number"
-                    android:maxLength="10"
+
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -415,7 +437,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-                    android:maxLength="10"
+
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -436,7 +458,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-                    android:maxLength="10"
+
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -457,7 +479,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-                    android:maxLength="10"
+
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -478,7 +500,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-                    android:maxLength="10"
+
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -499,7 +521,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-                    android:maxLength="10"
+
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -520,7 +542,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="number"
-                    android:maxLength="10"
+
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -541,7 +563,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="number"
-                    android:maxLength="10"
+
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -562,7 +584,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="textEmailAddress"
-                    android:maxLength="10"
+
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -583,7 +605,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="number"
-                    android:maxLength="10"
+
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -630,7 +652,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-                    android:maxLength="10"
+
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -659,7 +681,7 @@
                         android:layout_height="@dimen/fifty"
                         android:focusable="false"
                         android:inputType="text"
-                        android:maxLength="10"
+
                         android:padding="@dimen/ten"
                         android:textColor="@color/textColor"
                         android:textSize="@dimen/edittextsize" />
@@ -714,7 +736,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-                    android:maxLength="10"
+
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -742,7 +764,7 @@
                         android:layout_height="@dimen/fifty"
                         android:focusable="false"
                         android:inputType="text"
-                        android:maxLength="10"
+
                         android:padding="@dimen/ten"
                         android:textColor="@color/textColor"
                         android:textSize="@dimen/edittextsize" />
@@ -800,7 +822,7 @@
                         android:layout_height="@dimen/fifty"
                         android:focusable="false"
                         android:inputType="text"
-                        android:maxLength="10"
+
                         android:padding="@dimen/ten"
                         android:textColor="@color/textColor"
                         android:textSize="@dimen/edittextsize" />
@@ -867,7 +889,7 @@
                         android:layout_height="@dimen/fifty"
                         android:focusable="false"
                         android:inputType="text"
-                        android:maxLength="10"
+
                         android:padding="@dimen/ten"
                         android:textColor="@color/textColor"
                         android:textSize="@dimen/edittextsize" />
@@ -939,7 +961,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="numberDecimal"
-                    android:maxLength="10"
+
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -982,7 +1004,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-                    android:maxLength="10"
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -1003,7 +1024,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-                    android:maxLength="10"
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -1024,7 +1044,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="datetime"
-                    android:maxLength="10"
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -1045,7 +1064,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="number"
-                    android:maxLength="10"
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -1073,7 +1091,7 @@
                         android:layout_height="@dimen/fifty"
                         android:focusable="false"
                         android:inputType="text"
-                        android:maxLength="10"
+
                         android:padding="@dimen/ten"
                         android:textColor="@color/textColor"
                         android:textSize="@dimen/edittextsize" />
@@ -1144,7 +1162,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-                    android:maxLength="10"
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -1165,7 +1182,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-                    android:maxLength="10"
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -1186,7 +1202,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="datetime"
-                    android:maxLength="10"
+
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -1207,7 +1223,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="number"
-                    android:maxLength="10"
+
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -1234,7 +1250,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/fifty"
                         android:inputType="text"
-                        android:maxLength="10"
+
                         android:padding="@dimen/ten"
                         android:textColor="@color/textColor"
                         android:textSize="@dimen/edittextsize" />
@@ -1317,7 +1333,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="number"
-                    android:maxLength="10"
+
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -1338,7 +1354,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="date"
-                    android:maxLength="10"
+
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -1366,7 +1382,7 @@
                         android:layout_height="@dimen/fifty"
                         android:focusable="false"
                         android:inputType="text"
-                        android:maxLength="10"
+
                         android:padding="@dimen/ten"
                         android:textColor="@color/textColor"
                         android:textSize="@dimen/edittextsize" />
@@ -1437,7 +1453,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="number"
-                    android:maxLength="10"
+
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -1458,7 +1474,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="date"
-                    android:maxLength="10"
+
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -1486,7 +1502,7 @@
                         android:layout_height="@dimen/fifty"
                         android:focusable="false"
                         android:inputType="text"
-                        android:maxLength="10"
+
                         android:padding="@dimen/ten"
                         android:textColor="@color/textColor"
                         android:textSize="@dimen/edittextsize" />
