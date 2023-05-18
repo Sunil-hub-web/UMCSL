@@ -6,11 +6,12 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="@dimen/ten"
             android:layout_marginStart="@dimen/ten"
             android:layout_marginTop="@dimen/ten"
@@ -59,10 +60,11 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/text_Branch"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="001"
+                    android:text="Chandanpur"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize">
 
@@ -87,10 +89,10 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/text_MSA"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="001"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize">
 
@@ -115,10 +117,10 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/text_DateTime"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="26/04/2022    13:08"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize">
 
@@ -143,10 +145,10 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/text_Name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="C.S.Sah00"
                     android:textAllCaps="true"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize">
@@ -172,10 +174,10 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/text_AccNo"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.1"
-                    android:text="2222"
                     android:textAllCaps="true"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize">
@@ -201,10 +203,10 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/text_Type"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Deposit"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize">
 
@@ -229,10 +231,10 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/text_ACOpenDate"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="26/04/2022"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize">
 
@@ -240,7 +242,7 @@
 
             </LinearLayout>
 
-            <LinearLayout
+           <!-- <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/ten"
@@ -257,16 +259,16 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/text_CustomerCode"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="222222"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize">
 
                 </TextView>
 
-            </LinearLayout>
+            </LinearLayout>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -285,10 +287,10 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/text_TrxnNo"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="3     1/16"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize">
 
@@ -313,10 +315,10 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/text_OpngBalance"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="6030.00"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize">
 
@@ -334,17 +336,45 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Rcvd Amount : "
+                    android:text="Recev Amount: "
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize">
 
                 </TextView>
 
                 <TextView
+                    android:id="@+id/text_RcvdAmount"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="60.00"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize">
+
+                </TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ten"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Closing Balance: "
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/text_ClosingBalance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize">
 
@@ -353,10 +383,10 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/text_showWrite"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="( Rs. Sixty only )"
                 android:textAllCaps="true"
                 android:textColor="@color/textColor"
                 android:textSize="@dimen/twenty"
@@ -392,11 +422,25 @@
 
             </com.google.android.material.button.MaterialButton>
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_periviousPage"
+                style="@style/buttonback"
+                android:layout_width="@dimen/hundred_fifty"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/ten"
+                android:layout_marginRight="@dimen/ten"
+                android:layout_marginBottom="10dp"
+                android:text="Back Page"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textsize"
+                android:textStyle="bold"
+                app:backgroundTint="@color/blue">
+
+            </com.google.android.material.button.MaterialButton>
+
         </LinearLayout>
 
     </ScrollView>
-
-
-
 
 </RelativeLayout>

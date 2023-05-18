@@ -41,7 +41,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/fifty"
                         android:inputType="number"
-
                         android:padding="@dimen/ten"
                         android:textColor="@color/textColor"
                         android:textSize="@dimen/edittextsize" />
@@ -68,6 +67,17 @@
 
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/errorshow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/red"
+                android:textSize="@dimen/textsize"
+                android:layout_marginLeft="@dimen/ten"
+                android:textStyle="bold">
+
+            </TextView>
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -110,7 +120,7 @@
                 </TextView>
 
                 <RadioGroup
-                    android:id="@+id/radioGroup"
+                    android:id="@+id/radioGroupSms"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:weightSum="2"
@@ -133,6 +143,7 @@
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:text="No"
+                        android:checked="true"
                         android:buttonTint="@color/back2">
 
                     </RadioButton>
@@ -171,7 +182,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -208,15 +218,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:weightSum="3"
                 android:layout_marginTop="@dimen/thirty"
@@ -226,15 +235,14 @@
 
                 <Button
                     android:id="@+id/btn_Save"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="@dimen/five"
-                    android:layout_marginBottom="10dp"
-                    android:layout_weight="1"
-                    android:padding="@dimen/five"
-                    android:text="Save"
                     android:background="@drawable/button_bg"
+                    android:layout_marginLeft="@dimen/twenty"
+                    android:layout_marginRight="@dimen/twenty"
+                    android:padding="@dimen/five"
+                    android:text="Collect"
+                    android:layout_centerHorizontal="true"
                     android:textColor="@color/white"
                     android:textSize="@dimen/textsize"
                     android:textStyle="bold"
@@ -242,7 +250,7 @@
 
                 </Button>
 
-                <Button
+                <!--<Button
                     android:id="@+id/btn_Reset"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -276,10 +284,10 @@
                     android:background="@drawable/button_bg"
                     app:backgroundTint="@color/primary">
 
-                </Button>
+                </Button>-->
 
 
-            </LinearLayout>
+            </RelativeLayout>
 
 
         </LinearLayout>

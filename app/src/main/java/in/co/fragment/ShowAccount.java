@@ -6,11 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -32,6 +34,8 @@ public class ShowAccount extends Fragment {
             DOB,Email,FatherName,Gender,MarkofIdenity,Memberid,MembershipNumber,Message,Status, APhotoPath,ASignaturePath,BalanceAmt,
             MobileNo,Pcontactno;
 
+    ImageView img_cancel;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -44,6 +48,7 @@ public class ShowAccount extends Fragment {
         edit_CustomerName = view.findViewById(R.id.edit_CustomerName);
         edit_MobileNumber = view.findViewById(R.id.edit_MobileNumber);
         edit_BalanceAmount = view.findViewById(R.id.edit_BalanceAmount);
+        img_cancel = view.findViewById(R.id.img_cancel);
 
         Bundle arguments = getArguments();
 
@@ -54,6 +59,18 @@ public class ShowAccount extends Fragment {
             //singleProduct(product_id);
 
         }
+
+        img_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                CollectAmountFragment collectAmountFragment = new CollectAmountFragment();
+                fragmentTransaction.replace(R.id.nav_host_fragment,collectAmountFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
 
         return view;
     }

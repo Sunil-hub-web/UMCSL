@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 
 import in.co.umcsl.DeshBoard;
+import in.co.umcsl.LoginPage;
 
 /**
  * Created by Narendra on 6/8/2017.
@@ -99,7 +100,7 @@ public class SessionManager {
         // Clearing all data from Shared Preferences
         editor.clear();
         editor.commit();
-        Intent i = new Intent(context, DeshBoard.class);
+        Intent i = new Intent(context, LoginPage.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(i);

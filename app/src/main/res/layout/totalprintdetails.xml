@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="10dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/ten"
+            android:id="@+id/recyclerReport"
+            android:layout_above="@id/btn_TotalPrint">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_TotalPrint"
+            style="@style/buttonback"
+            android:layout_width="@dimen/two_hundred"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_marginRight="@dimen/ten"
+            android:layout_marginBottom="10dp"
+            android:padding="@dimen/ten"
+            android:text="Print Details"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            app:backgroundTint="@color/blue"
+            android:layout_above="@id/btn_BackOption">
+
+        </com.google.android.material.button.MaterialButton>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_BackOption"
+            style="@style/buttonback"
+            android:layout_width="@dimen/two_hundred"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_marginRight="@dimen/ten"
+            android:layout_marginBottom="10dp"
+            android:padding="@dimen/ten"
+            android:text="Back"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            app:backgroundTint="@color/blue"
+            android:layout_alignParentBottom="true">
+
+        </com.google.android.material.button.MaterialButton>
+
+    </RelativeLayout>
+
+</RelativeLayout>

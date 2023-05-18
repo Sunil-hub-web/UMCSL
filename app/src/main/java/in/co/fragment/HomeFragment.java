@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,12 +14,15 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import in.co.extra.SessionManager;
 import in.co.umcsl.DeshBoard;
 import in.co.umcsl.R;
 
 public class HomeFragment extends Fragment {
 
     Button btn_AccountCreation,btn_CollectAmount,btn_Report,btn_Profile,btn_AssignCustomer;
+    SessionManager sessionManager;
+    ImageView logout_bar_img;
 
     @Nullable
     @Override
@@ -34,8 +38,11 @@ public class HomeFragment extends Fragment {
         btn_CollectAmount = view.findViewById(R.id.btn_CollectAmount);
         btn_Report = view.findViewById(R.id.btn_Report);
         btn_AssignCustomer = view.findViewById(R.id.btn_AssignCustomer);
+        logout_bar_img = view.findViewById(R.id.logout_bar_img);
 
         name_text.setText("Home");
+
+        sessionManager = new SessionManager(getContext());
 
         btn_AccountCreation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,6 +111,15 @@ public class HomeFragment extends Fragment {
                 fragmentTransaction.commit();
 
                 DeshBoard.chipNavigationBar.setItemSelected(R.id.home, false);
+            }
+        });
+
+        logout_bar_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                sessionManager.logoutUser();
+
             }
         });
 

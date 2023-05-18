@@ -41,12 +41,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="number"
-                 
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/accountNoExit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/ten"
+                android:textColor="@color/red"
+                android:textSize="@dimen/textsize"
+                android:textStyle="bold">
+
+            </TextView>
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -62,7 +72,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="date"
-
                     android:padding="@dimen/ten"
                     android:cursorVisible="false"
                     android:focusable="false"
@@ -87,7 +96,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -108,7 +116,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="number"
-
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -120,7 +127,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/ten"
-                android:hint="Father's/Husband's Nmae"
+                android:hint="Father/Husband Nmae"
                 app:boxStrokeColor="@color/back2"
                 app:hintTextColor="@color/back2">
 
@@ -129,7 +136,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize"
@@ -137,7 +143,7 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+           <!-- <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -151,12 +157,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>-->
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -178,7 +183,7 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+           <!-- <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -192,12 +197,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>-->
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -230,11 +234,11 @@
                 app:hintTextColor="@color/back2">
 
                 <EditText
+
                     android:id="@+id/edit_DepositeAmt"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -252,7 +256,7 @@
 
             </TextView>
 
-            <TextView
+       <!--     <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/ten"
@@ -261,7 +265,7 @@
                 android:textSize="@dimen/textsize"
                 android:textStyle="bold">
 
-            </TextView>
+            </TextView>-->
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -283,7 +287,7 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+<!--            <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -318,7 +322,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -339,7 +342,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/fifty"
                     android:inputType="text"
-
                     android:padding="@dimen/ten"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
@@ -442,9 +444,9 @@
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>-->
 
-            <com.google.android.material.textfield.TextInputLayout
+ <!--           <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -610,9 +612,9 @@
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>-->
 
-            <TextView
+<!--            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/twenty"
@@ -945,9 +947,9 @@
                 android:textSize="@dimen/twenty"
                 android:textStyle="bold">
 
-            </TextView>
+            </TextView>-->
 
-            <com.google.android.material.textfield.TextInputLayout
+           <!-- <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -966,6 +968,27 @@
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/edittextsize" />
 
+            </com.google.android.material.textfield.TextInputLayout>-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/ten"
+                android:hint="Contact Number"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_ContactNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/edittextsize" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -979,7 +1002,7 @@
 
             </TextView>
 
-            <TextView
+          <!--  <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/ten"
@@ -988,7 +1011,7 @@
                 android:textSize="@dimen/textsize"
                 android:textStyle="bold">
 
-            </TextView>
+            </TextView>-->
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -1030,7 +1053,7 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <!--<com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1546,7 +1569,7 @@
                 android:scaleType="centerInside"
                 android:src="@drawable/signature">
 
-            </ImageView>
+            </ImageView>-->
 
 
             <com.google.android.material.button.MaterialButton
@@ -1559,7 +1582,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="@dimen/ten"
                 android:layout_marginBottom="10dp"
-                android:text="Save"
+                android:text="Create Account"
                 android:textColor="@color/white"
                 android:textSize="@dimen/textsize"
                 android:textStyle="bold"

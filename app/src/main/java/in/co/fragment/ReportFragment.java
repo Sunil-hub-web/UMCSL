@@ -1,19 +1,36 @@
 package in.co.fragment;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,7 +38,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import in.co.adapter.AssignCustomerAdapter;
 import in.co.adapter.ReportAdapter;
+import in.co.extra.Appurl;
+import in.co.extra.SessionManager;
+import in.co.modelclass.AssignCustomer_ModelClass;
 import in.co.modelclass.Report_ModelClass;
 import in.co.umcsl.R;
 
@@ -33,9 +54,12 @@ public class ReportFragment extends Fragment {
     ArrayList<Report_ModelClass> report = new ArrayList<>();
     EditText edit_ToDate,edit_FromDate;
     int year, month, day, hour, minute;
-    String date,time;
+    String date,time,userId,DateofCollection;
     DatePickerDialog.OnDateSetListener setListener;
+    SessionManager sessionManager;
+    ImageView logout_bar_img;
 
+    TextView totalPrint;
 
     @Nullable
     @Override
@@ -46,25 +70,28 @@ public class ReportFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_report,container,false);
 
         recyclerReport = view.findViewById(R.id.recyclerReport);
-        edit_ToDate = view.findViewById(R.id.edit_ToDate);
+       // edit_ToDate = view.findViewById(R.id.edit_ToDate);
         edit_FromDate = view.findViewById(R.id.edit_FromDate);
+        logout_bar_img = view.findViewById(R.id.logout_bar_img);
+        totalPrint = view.findViewById(R.id.totalPrint);
 
         TextView name_text = view.findViewById(R.id.name_text);
 
         name_text.setText("Report");
 
-        report.add(new Report_ModelClass("29.4.2022","12:41","1002","Rs. 1200","Rs. 3000"));
-        report.add(new Report_ModelClass("15.3.2022","11:41","1031","Rs. 1000","Rs. 2000"));
-        report.add(new Report_ModelClass("11.1.2022","1:42","1039","Rs. 1500","Rs. 4000"));
-        report.add(new Report_ModelClass("25.8.2021","10:31","1071","Rs. 1800","Rs. 5000"));
-        report.add(new Report_ModelClass("22.8.2021","9:41","1072","Rs. 1300","Rs. 2500"));
+        edit_FromDate.setText("");
 
+        sessionManager = new SessionManager(getContext());
+        userId = sessionManager.getUserID();
 
-        linearLayoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
-        reportAdapter = new ReportAdapter(report,getActivity());
-        recyclerReport.setLayoutManager(linearLayoutManager);
-        recyclerReport.setHasFixedSize(true);
-        recyclerReport.setAdapter(reportAdapter);
+        Bundle arguments = getArguments();
+
+        if (arguments != null) {
+
+            DateofCollection = arguments.get("DateofCollection").toString();
+            getReport(userId,DateofCollection);
+            edit_FromDate.setText(DateofCollection);
+        }
 
         edit_FromDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,13 +101,23 @@ public class ReportFragment extends Fragment {
             }
         });
 
-        edit_ToDate.setOnClickListener(new View.OnClickListener() {
+        logout_bar_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                showCalender2();
+                sessionManager.logoutUser();
+
             }
         });
+
+
+    /*    edit_ToDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //showCalender2();
+            }
+        });*/
 
         Calendar calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
@@ -117,6 +154,31 @@ public class ReportFragment extends Fragment {
             }
         };
 
+        totalPrint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+                if (edit_FromDate.getText().toString().trim().equals("")){
+
+                    Toast.makeText(getActivity(), "Select your Date", Toast.LENGTH_SHORT).show();
+
+                }else{
+
+                    FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                    TotalPrintDet totalPrintDet = new TotalPrintDet();
+                    Bundle bundle=new Bundle();
+                    bundle.putString("DateofCollection", edit_FromDate.getText().toString().trim());
+                    bundle.putString("AgentId", userId);
+                    totalPrintDet.setArguments(bundle);
+                    fragmentTransaction.replace(R.id.nav_host_fragment,totalPrintDet);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+
+                    edit_FromDate.setText("");
+                }
+
+            }
+        });
 
         return view;
     }
@@ -141,9 +203,12 @@ public class ReportFragment extends Fragment {
                     fDate="0"+dayOfMonth;
                 }
 
-                date = year+"/"+fmonth+"/"+fDate;
+                date = fDate+"/"+fmonth+"/"+year;
                 //String date = year+"-"+month+"-"+day;
                 edit_FromDate.setText(date);
+
+                getReport(userId,date);
+                //getReport("10","01/04/2023");
 
             }
         },year,month,day);
@@ -179,5 +244,71 @@ public class ReportFragment extends Fragment {
         },year,month,day);
 
         datePickerDialog.show();
+    }
+
+    public void getReport(String agentId, String date){
+
+        ProgressDialog progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Please Wait....");
+        progressDialog.show();
+
+        String apilistData = Appurl.DailyCollection+"AgentId="+agentId+"&DateofCollection="+date;
+
+        Log.d("showdatedata",apilistData);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, apilistData, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                progressDialog.dismiss();
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    String SVCGetAgentCollectionResult = jsonObject.getString("SVCGetAgentCollectionResult");
+
+                    JSONArray jsonArray = new JSONArray(SVCGetAgentCollectionResult);
+
+                    report.clear();
+
+                    for (int i=0;i<jsonArray.length();i++){
+
+                        JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+
+                        String AccountNumber = jsonObject1.getString("AccountNumber");
+                        String Active = jsonObject1.getString("Active");
+                        String AgentId = jsonObject1.getString("AgentId");
+                        String Balance = jsonObject1.getString("Balance");
+                        String CreatedDate = jsonObject1.getString("CreatedDate");
+                        String DepositAmount = jsonObject1.getString("DepositAmount");
+                        String Message = jsonObject1.getString("Message");
+                        String Status = jsonObject1.getString("Status");
+                        String UName = jsonObject1.getString("UName");
+                        String VocherNumber = jsonObject1.getString("VocherNumber");
+
+                        report.add(new Report_ModelClass(CreatedDate,"",AccountNumber,DepositAmount,Balance,VocherNumber,UName));
+
+                    }
+
+                    linearLayoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
+                    reportAdapter = new ReportAdapter(report,getActivity());
+                    recyclerReport.setLayoutManager(linearLayoutManager);
+                    recyclerReport.setHasFixedSize(true);
+                    recyclerReport.setAdapter(reportAdapter);
+
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                progressDialog.dismiss();
+                Toast.makeText(getContext(), ""+error, Toast.LENGTH_SHORT).show();
+            }
+        });
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(3000,3,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
     }
 }

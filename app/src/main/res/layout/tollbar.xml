@@ -14,8 +14,8 @@
         android:layout_marginEnd="@dimen/seven"
         android:layout_marginRight="@dimen/seven"
         android:layout_marginBottom="@dimen/seven">
-<!--
-        <ImageView
+
+      <!--  <ImageView
             android:layout_width="@dimen/seventy"
             android:layout_height="@dimen/forty"
             android:layout_marginLeft="@dimen/ten"
@@ -33,6 +33,17 @@
             android:layout_centerVertical="true"
             android:scaleType="centerInside"
             android:src="@drawable/notification">
+
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/logout_bar_img"
+            android:layout_width="@dimen/twenty_five"
+            android:layout_height="@dimen/twenty_five"
+            android:layout_toLeftOf="@+id/menu_bar_img"
+            android:layout_marginRight="@dimen/fifteen"
+            android:scaleType="centerInside"
+            android:src="@drawable/power">
 
         </ImageView>
 

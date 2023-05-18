@@ -5,8 +5,12 @@ import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,9 +45,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import in.co.extra.Appurl;
+import in.co.extra.SessionManager;
 import in.co.umcsl.DeshBoard;
 import in.co.umcsl.LoginPage;
 import in.co.umcsl.R;
@@ -61,15 +69,19 @@ public class AccountCreationFragment extends Fragment {
     String[] addressProofName = {"-Document Proof Name-", "Driving License", "Adhaar(UID)", "Passport", "voter id"};
     MaterialButton btn_ChooseFileidentity, btn_ChooseFileAddress, btn_ChooseFilePhoto, btn_ChooseFileSignature,
             btn_ChooseFileNominee, btn_ChooseFileNominee1, btn_ChooseFileIntroducer1, btn_ChooseFileIntroducer2,btn_Serach;
-    ImageView img_viewUserPhoto, img_viewUserSignature, img_viewSignatureNominee, img_viewSignatureNominee1;
+    ImageView img_viewUserPhoto, img_viewUserSignature, img_viewSignatureNominee, img_viewSignatureNominee1,logout_bar_img;
 
     public static final int IMAGE_CODE = 1;
-    String imageSelect,AccountNumber,Active,CreatedDate,DOB,Email,FatherHusbandName,MemberId,MemberName,Message,
+    String imageSelect,AccountNumber,Active,CreatedDate,DOB,Email,FatherHusbandName,MemberId,MemberName,Message,agentid,
             Mobilenumber,Status,message,Id,Name,Email1,Message1,Mobilenumber1,Status1,Address,str_AccountNo,str_DateOfJoining,
-            str_ApplicantName,str_Age,str_Gender,str_ContactNo,str_DepositeAmt,str_Address,str_FatherName,str_Relation,str_NomineeName1;
+            str_ApplicantName,str_Age,str_Gender,str_ContactNo,str_DepositeAmt,str_Address,str_FatherName,str_Relation,str_NomineeName1,
+            Message3,Status3;
     ActivityResultLauncher<Intent> resultLauncher;
-
     Button btn_signin;
+
+    TextView accountNoExit;
+
+    SessionManager sessionManager;
 
     @Nullable
     @Override
@@ -83,10 +95,27 @@ public class AccountCreationFragment extends Fragment {
 
         name_text.setText("Account Creation");
 
+        sessionManager = new SessionManager(getContext());
+        agentid = sessionManager.getUserID();
+
+        Log.d("gfdtrctcfc",agentid);
+
+        String date = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).format(new Date());
+        edit_DateOfJoining.setText(date);
+
+        logout_bar_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                sessionManager.logoutUser();
+
+            }
+        });
+
         userDetails.setVisibility(View.GONE);
         serachMemberId.setVisibility(View.GONE);
 
-        ArrayAdapter selectidProof = new ArrayAdapter(getActivity(), R.layout.spinneritem, addressProofName);
+       /* ArrayAdapter selectidProof = new ArrayAdapter(getActivity(), R.layout.spinneritem, addressProofName);
         selectidProof.setDropDownViewResource(R.layout.spinnerdropdownitem);
         spinner_SelectidProof.setAdapter(selectidProof);
         spinner_SelectidProof.setSelection(-1, true);
@@ -94,8 +123,7 @@ public class AccountCreationFragment extends Fragment {
         ArrayAdapter addressProof = new ArrayAdapter(getActivity(), R.layout.spinneritem, addressProofName);
         addressProof.setDropDownViewResource(R.layout.spinnerdropdownitem);
         spinner_AddressProof.setAdapter(addressProof);
-        spinner_AddressProof.setSelection(-1, true);
-
+        spinner_AddressProof.setSelection(-1, true);*/
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -118,11 +146,10 @@ public class AccountCreationFragment extends Fragment {
                         message = "MemberId";
 
                         edit_AccountNo.setText("");
-                        edit_DateOfJoining.setText("");
                         edit_ApplicantName.setText("");
                         edit_Age.setText("");
                         edit_FatherHusbandName.setText("");
-                        edit_Status.setText("");
+                       // edit_Status.setText("");
                         edit_Address.setText("");
 
 
@@ -134,11 +161,10 @@ public class AccountCreationFragment extends Fragment {
                         message = "MemberShip";
 
                         edit_AccountNo.setText("");
-                        edit_DateOfJoining.setText("");
                         edit_ApplicantName.setText("");
                         edit_Age.setText("");
                         edit_FatherHusbandName.setText("");
-                        edit_Status.setText("");
+                       // edit_Status.setText("");
                         edit_Address.setText("");
 
 
@@ -150,15 +176,12 @@ public class AccountCreationFragment extends Fragment {
                         str_ContactNo = edit_ContactNo.getText().toString().trim();
                         str_DepositeAmt = edit_DepositeAmt.getText().toString().trim();
 
-
-
                         accountCreation(str_AccountNo,str_DateOfJoining,str_ApplicantName,str_Age,str_Gender,str_ContactNo,str_DepositeAmt);*/
                     }
 
                 }
             }
         });
-
         btn_Serach.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -177,7 +200,6 @@ public class AccountCreationFragment extends Fragment {
                 }
             }
         });
-
         btn_signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -204,12 +226,16 @@ public class AccountCreationFragment extends Fragment {
                     str_NomineeName1 = edit_NomineeName1.getText().toString().trim();
                     str_Relation = edit_Relation.getText().toString().trim();
 
+                    //accountCreation(str_AccountNo,str_DateOfJoining,str_ApplicantName,str_Age,str_FatherName,str_Address,
+                       //     str_Gender,str_NomineeName1,str_Relation,str_ContactNo,str_DepositeAmt);
+
                     accountCreation(str_AccountNo,str_DateOfJoining,str_ApplicantName,str_Age,str_FatherName,str_Address,
-                            str_Gender,str_NomineeName1,str_Relation,str_ContactNo,str_DepositeAmt);
+                            str_Gender,str_ContactNo,str_DepositeAmt,str_NomineeName1,str_Relation,agentid);
                 }
             }
         });
 
+    /*
         resultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
             @Override
             public void onActivityResult(ActivityResult result) {
@@ -274,8 +300,6 @@ public class AccountCreationFragment extends Fragment {
                 }
             }
         });
-
-
         btn_ChooseFilePhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -285,7 +309,6 @@ public class AccountCreationFragment extends Fragment {
 
             }
         });
-
         btn_ChooseFileSignature.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -295,7 +318,6 @@ public class AccountCreationFragment extends Fragment {
 
             }
         });
-
         btn_ChooseFileNominee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -305,7 +327,6 @@ public class AccountCreationFragment extends Fragment {
 
             }
         });
-
         btn_ChooseFileNominee1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -315,7 +336,6 @@ public class AccountCreationFragment extends Fragment {
 
             }
         });
-
         btn_ChooseFileidentity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -325,7 +345,6 @@ public class AccountCreationFragment extends Fragment {
 
             }
         });
-
         btn_ChooseFileAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -335,7 +354,6 @@ public class AccountCreationFragment extends Fragment {
 
             }
         });
-
         btn_ChooseFileIntroducer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -345,7 +363,6 @@ public class AccountCreationFragment extends Fragment {
 
             }
         });
-
         btn_ChooseFileIntroducer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -356,6 +373,7 @@ public class AccountCreationFragment extends Fragment {
             }
         });
 
+        */
         edit_DateOfJoining.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -382,6 +400,31 @@ public class AccountCreationFragment extends Fragment {
             }
         });
 
+        edit_AccountNo.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+
+
+                if(!edit_AccountNo.getText().toString().trim().equals("")){
+
+                    str_AccountNo = edit_AccountNo.getText().toString().trim();
+                    accountValidation(str_AccountNo);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
 
         return view;
     }
@@ -393,29 +436,29 @@ public class AccountCreationFragment extends Fragment {
         radioGroup = view.findViewById(R.id.radioGroup);
         userDetails = view.findViewById(R.id.userDetails);
 
-        spinner_SelectidProof = view.findViewById(R.id.spinner_SelectidProof);
-        spinner_AddressProof = view.findViewById(R.id.spinner_AddressProof);
-
-        btn_ChooseFileidentity = view.findViewById(R.id.btn_ChooseFileidentity);
-        btn_ChooseFileAddress = view.findViewById(R.id.btn_ChooseFileAddress);
-        btn_ChooseFilePhoto = view.findViewById(R.id.btn_ChooseFilePhoto);
-        btn_ChooseFileSignature = view.findViewById(R.id.btn_ChooseFileSignature);
-        btn_ChooseFileNominee = view.findViewById(R.id.btn_ChooseFileNominee);
-        btn_ChooseFileNominee1 = view.findViewById(R.id.btn_ChooseFileNominee1);
+//        spinner_SelectidProof = view.findViewById(R.id.spinner_SelectidProof);
+//        spinner_AddressProof = view.findViewById(R.id.spinner_AddressProof);
+//
+//        btn_ChooseFileidentity = view.findViewById(R.id.btn_ChooseFileidentity);
+//        btn_ChooseFileAddress = view.findViewById(R.id.btn_ChooseFileAddress);
+//        btn_ChooseFilePhoto = view.findViewById(R.id.btn_ChooseFilePhoto);
+//        btn_ChooseFileSignature = view.findViewById(R.id.btn_ChooseFileSignature);
+//        btn_ChooseFileNominee = view.findViewById(R.id.btn_ChooseFileNominee);
+//        btn_ChooseFileNominee1 = view.findViewById(R.id.btn_ChooseFileNominee1);
         btn_ChooseFileIntroducer1 = view.findViewById(R.id.btn_ChooseFileIntroducer1);
         btn_ChooseFileIntroducer2 = view.findViewById(R.id.btn_ChooseFileIntroducer2);
 
-        img_viewUserPhoto = view.findViewById(R.id.img_viewUserPhoto);
-        img_viewUserSignature = view.findViewById(R.id.img_viewUserSignature);
-        img_viewSignatureNominee = view.findViewById(R.id.img_viewSignatureNominee);
-        img_viewSignatureNominee1 = view.findViewById(R.id.img_viewSignatureNominee1);
-
-        edit_IdentityProofFile = view.findViewById(R.id.edit_IdentityProofFile);
-        edit_AddressProofFile = view.findViewById(R.id.edit_AddressProofFile);
-        edit_Photo = view.findViewById(R.id.edit_Photo);
-        edit_Signature = view.findViewById(R.id.edit_Signature);
-        edit_SignatureNominee = view.findViewById(R.id.edit_SignatureNominee);
-        edit_SignatureNominee1 = view.findViewById(R.id.edit_SignatureNominee1);
+//        img_viewUserPhoto = view.findViewById(R.id.img_viewUserPhoto);
+//        img_viewUserSignature = view.findViewById(R.id.img_viewUserSignature);
+//        img_viewSignatureNominee = view.findViewById(R.id.img_viewSignatureNominee);
+//        img_viewSignatureNominee1 = view.findViewById(R.id.img_viewSignatureNominee1);
+//
+//        edit_IdentityProofFile = view.findViewById(R.id.edit_IdentityProofFile);
+//        edit_AddressProofFile = view.findViewById(R.id.edit_AddressProofFile);
+//        edit_Photo = view.findViewById(R.id.edit_Photo);
+//        edit_Signature = view.findViewById(R.id.edit_Signature);
+//        edit_SignatureNominee = view.findViewById(R.id.edit_SignatureNominee);
+//        edit_SignatureNominee1 = view.findViewById(R.id.edit_SignatureNominee1);
         edit_IntroducerSignature2 = view.findViewById(R.id.edit_IntroducerSignature2);
         edit_IntroducerSignature1 = view.findViewById(R.id.edit_IntroducerSignature1);
         btn_Serach = view.findViewById(R.id.btn_Serach);
@@ -424,9 +467,9 @@ public class AccountCreationFragment extends Fragment {
         edit_ApplicantName = view.findViewById(R.id.edit_ApplicantName);
         edit_Age = view.findViewById(R.id.edit_Age);
         edit_FatherHusbandName = view.findViewById(R.id.edit_FatherHusbandName);
-        edit_MarkOfIdentity = view.findViewById(R.id.edit_MarkOfIdentity);
+       // edit_MarkOfIdentity = view.findViewById(R.id.edit_MarkOfIdentity);
         edit_Gender = view.findViewById(R.id.edit_Gender);
-        edit_Status = view.findViewById(R.id.edit_Status);
+       // edit_Status = view.findViewById(R.id.edit_Status);
         edit_Occupation = view.findViewById(R.id.edit_Occupation);
         serachMemberId = view.findViewById(R.id.serachMemberId);
         edit_AccountNo = view.findViewById(R.id.edit_AccountNo);
@@ -436,6 +479,8 @@ public class AccountCreationFragment extends Fragment {
         edit_ContactNo = view.findViewById(R.id.edit_ContactNo);
         edit_Relation = view.findViewById(R.id.edit_Relation);
         edit_NomineeName1 = view.findViewById(R.id.edit_NomineeName1);
+        logout_bar_img = view.findViewById(R.id.logout_bar_img);
+        accountNoExit = view.findViewById(R.id.accountNoExit);
     }
 
     public void selectImage() {
@@ -493,7 +538,7 @@ public class AccountCreationFragment extends Fragment {
                     edit_ApplicantName.setText(MemberName);
                     edit_Age.setText(DOB);
                     edit_FatherHusbandName.setText(FatherHusbandName);
-                    edit_Status.setText(Status);
+                    //edit_Status.setText(Status);
                     edit_Address.setText(Address);
 
 //                    edit_AccountNo.setEnabled(false);
@@ -528,16 +573,18 @@ public class AccountCreationFragment extends Fragment {
 
     public void accountCreation(String Accountno,String DateOfJoining,String ApplicantName,String Age,
                                 String FathersName,String PresentAddress,String Gender,
-                                String Mobileno,String DepositeAmt,String Nominee,String relation){
+                                String MobileNo,String DepositeAmt,String Nominee,String relation,String AgentID){
 
         ProgressDialog progressDialog = new ProgressDialog(getContext());
-        progressDialog.setMessage("Login Please Wait....");
+        progressDialog.setMessage("Account Creation Please Wait....");
         progressDialog.show();
 
         String createAcc = Appurl.CreateMemberAccount+"Accountno="+Accountno+"&DateOfJoining="
                 +DateOfJoining+"&ApplicantName="+ApplicantName+"&Age="+Age+"&FathersName="
-                +FathersName+"&PresentAddress="+PresentAddress+"&Gender="+Gender+"&Mobileno="
-                +Mobileno+"&Nominee="+Nominee+"&relation="+relation+"&DepositeAmt="+DepositeAmt;
+                +FathersName+"&PresentAddress="+PresentAddress+"&Gender"+Gender+"&MobileNo="+MobileNo+"&Nominee="+Nominee+"&relation="
+                +relation+"&DepositeAmt="+DepositeAmt+"&AgentID="+AgentID;
+
+        Log.d("jcretaeaccountg",createAcc);
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET,createAcc, response -> {
 
@@ -569,6 +616,14 @@ public class AccountCreationFragment extends Fragment {
                 }else{
 
                     Toast.makeText(getContext(), Message1, Toast.LENGTH_SHORT).show();
+
+                    edit_AccountNo.setText("");
+                    edit_DateOfJoining.setText("");
+                    edit_ApplicantName.setText("");
+                    edit_Age.setText("");
+                    edit_FatherHusbandName.setText("");
+                   // edit_Status.setText("");
+                    edit_Address.setText("");
                 }
 
 
@@ -588,4 +643,65 @@ public class AccountCreationFragment extends Fragment {
         requestQueue.add(stringRequest);
 
     }
+
+    public void accountValidation(String Accountno){
+
+        ProgressDialog progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Account Creation Please Wait....");
+        progressDialog.show();
+
+        String createAcc = Appurl.SVCCheckAccountExists+"AccountNumber="+Accountno;
+
+        Log.d("jcretaeaccountg",createAcc);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET,createAcc, response -> {
+
+            progressDialog.dismiss();
+
+            try {
+                JSONObject jsonObject = new JSONObject(response);
+
+                String SCreateMemberAccountResult = jsonObject.getString("SVCCheckAccountExistsResult");
+                JSONArray jsonArray_login = new JSONArray(SCreateMemberAccountResult);
+
+                for (int i= 0;i<jsonArray_login.length();i++){
+
+                    JSONObject jsonObject_logindata = jsonArray_login.getJSONObject(0);
+
+                    Message3 = jsonObject_logindata.getString("Message");
+                    Status3 = jsonObject_logindata.getString("Status");
+
+                }
+
+                if (Status3.equals("0")){
+
+                   // Toast.makeText(getContext(), Message1, Toast.LENGTH_SHORT).show();
+                    accountNoExit.setText(Message3);
+
+                }else{
+
+                   // Toast.makeText(getContext(), Message1, Toast.LENGTH_SHORT).show();
+                    accountNoExit.setText(Message3);
+                    accountNoExit.setTextColor(Color.GREEN);
+                }
+
+
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
+
+        },error -> {
+
+            progressDialog.dismiss();
+            Toast.makeText(getContext(), ""+error, Toast.LENGTH_SHORT).show();
+
+        });
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(3000,3,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
+
+    }
+
+
 }

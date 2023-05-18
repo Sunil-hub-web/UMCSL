@@ -21,9 +21,9 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="1.7"
             android:layout_margin="@dimen/five"
-            android:hint="From Date"
+            android:hint="Select From Date"
             app:boxStrokeColor="@color/back2"
             app:hintTextColor="@color/back2">
 
@@ -31,38 +31,31 @@
                 android:id="@+id/edit_FromDate"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/forty_five"
+                android:cursorVisible="false"
+                android:drawableRight="@drawable/calendar"
+                android:focusable="false"
                 android:inputType="number"
-
                 android:padding="@dimen/ten"
                 android:textColor="@color/textColor"
-                android:textSize="@dimen/textsize"
-                android:drawableRight="@drawable/calendar"/>
+                android:textSize="@dimen/textsize" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ToDate"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+        <TextView
+            android:id="@+id/totalPrint"
+            android:layout_width="@dimen/eighty"
+            android:layout_height="@dimen/forty_five"
+            android:layout_weight="0.3"
+            android:text="Total Print"
+            android:gravity="center"
+            android:textColor="@color/white"
             android:layout_margin="@dimen/five"
-            android:hint="To Date"
-            app:boxStrokeColor="@color/back2"
-            app:hintTextColor="@color/back2">
+            android:background="@drawable/button_bg"
+            android:textSize="@dimen/textsize"
+            android:backgroundTint="@color/blue"
+            android:padding="@dimen/five">
 
-            <EditText
-                android:id="@+id/edit_ToDate"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/forty_five"
-                android:inputType="number"
-
-                android:padding="@dimen/ten"
-                android:textColor="@color/textColor"
-                android:textSize="@dimen/textsize"
-                android:drawableRight="@drawable/calendar"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
+        </TextView>
 
     </LinearLayout>
 
