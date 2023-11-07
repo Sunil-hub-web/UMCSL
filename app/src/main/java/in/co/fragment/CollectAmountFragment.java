@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,7 +55,7 @@ public class CollectAmountFragment extends Fragment {
     String paidBy[] = {"Self","Relatives","Others"};
     String paymentMode[] = {"Cash","Online"};
     Button btn_Save,btn_Show;
-    EditText edit_Date,edit_AccountNo,edit_VocherNumber,edit_DepositAmount;
+    EditText edit_Date,edit_AccountNo,edit_VocherNumber,edit_DepositAmount,edit_FixAccount;
     TextInputLayout editDate;
     int year, month, day, hour, minute;
     String date,time, AccountNo,Balance,DepositeAmount,Message,Status,TransactionID,str_Date,str_AccountNo,
@@ -94,18 +95,11 @@ public class CollectAmountFragment extends Fragment {
         radioGroup = view.findViewById(R.id.radioGroupSms);
         logout_bar_img = view.findViewById(R.id.logout_bar_img);
         errorshow = view.findViewById(R.id.errorshow);
+        edit_FixAccount = view.findViewById(R.id.edit_FixAccount);
 
         name_text.setText("Collect Amount");
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyMMdd");
-        sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
-        Date d = new Date();
-        String result = sdf.format(d);
-        int b = (int)(Math.random()*(max-min+1)+min);
 
-        String number = String.valueOf(b);
-        String rendom_number = "v"+result+number;
-        edit_VocherNumber.setText(rendom_number);
 
         ArrayAdapter paymentModeAdapter = new ArrayAdapter(getActivity(), R.layout.spinneritem, paymentMode);
         paymentModeAdapter.setDropDownViewResource(R.layout.spinnerdropdownitem);
@@ -122,6 +116,16 @@ public class CollectAmountFragment extends Fragment {
         String date = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).format(new Date());
         edit_Date.setText(date);
 
+        SimpleDateFormat sdf = new SimpleDateFormat("yyMMdd");
+        sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+        Date d = new Date();
+        String result = sdf.format(d);
+        int b = (int)(Math.random()*(max-min+1)+min);
+
+        String number = String.valueOf(b);
+        String rendom_number = "v"+result+number;
+        edit_VocherNumber.setText(rendom_number);
+
         sessionManager = new SessionManager(getContext());
         userId = sessionManager.getUserID();
 
@@ -134,7 +138,7 @@ public class CollectAmountFragment extends Fragment {
             if (message.equals("PrintPdf")){
 
                 edit_AccountNo.setText("");
-                edit_VocherNumber.setText("");
+               // edit_VocherNumber.setText("");
                 edit_DepositAmount.setText("");
             }
 
@@ -165,7 +169,11 @@ public class CollectAmountFragment extends Fragment {
                     Toast.makeText(getActivity(), "set You VocherNumber", Toast.LENGTH_SHORT).show();
                 }else {
 
-                    str_AccountNo = edit_AccountNo.getText().toString().trim();
+                    String accno = edit_AccountNo.getText().toString().trim();
+                    String accno1 = edit_FixAccount.getText().toString().trim();
+                    str_AccountNo = accno1+accno;
+
+                  //  str_AccountNo = edit_AccountNo.getText().toString().trim();
                     str_Date = edit_Date.getText().toString().trim();
                     str_DepositAmount = edit_DepositAmount.getText().toString().trim();
                     str_SMSAllow = selectedradioButton.getText().toString();
@@ -182,10 +190,14 @@ public class CollectAmountFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                String accno = edit_AccountNo.getText().toString().trim();
+                String accno1 = edit_FixAccount.getText().toString().trim();
+                String totalacc = accno1+accno;
+
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 ShowAccount showAccount = new ShowAccount();
                 Bundle bundle=new Bundle();
-                bundle.putString("product_id", edit_AccountNo.getText().toString().trim());
+                bundle.putString("product_id",totalacc);
                 showAccount.setArguments(bundle);
                 fragmentTransaction.replace(R.id.nav_host_fragment,showAccount);
                 fragmentTransaction.addToBackStack(null);
@@ -257,7 +269,10 @@ public class CollectAmountFragment extends Fragment {
                 if (!edit_AccountNo.getText().toString().trim().equals("")){
 
                     String accno = edit_AccountNo.getText().toString().trim();
-                    assignCustomer(accno,userId);
+                    String accno1 = edit_FixAccount.getText().toString().trim();
+                    String totalacc = accno1+accno;
+                    Log.d("alldetails",totalacc);
+                    assignCustomer(totalacc,userId);
                 }
 
             }
@@ -323,67 +338,75 @@ public class CollectAmountFragment extends Fragment {
                     JSONObject jsonObject = new JSONObject(response);
                     String SSaveDailyAccountDepositeResult = jsonObject.getString("SSaveDailyAccountDepositeResult");
                     JSONArray jsonArray = new JSONArray(SSaveDailyAccountDepositeResult);
-                    for (int i=0;i< jsonArray.length();i++){
 
-                        JSONObject jsonObject1 = jsonArray.getJSONObject(0);
+                    if(jsonArray.length() != 0 ){
 
-                        AccountNo = jsonObject1.getString("AccountNo");
-                        AgentCode = jsonObject1.getString("AgentCode");
-                        AmounttoText = jsonObject1.getString("AmounttoText");
-                        ApplicantName = jsonObject1.getString("ApplicantName");
-                        Balance = jsonObject1.getString("Balance");
-                        Bankname = jsonObject1.getString("Bankname");
-                        Chequenumber = jsonObject1.getString("Chequenumber");
-                        Contactnumber = jsonObject1.getString("Contactnumber");
-                        DepositeAmount = jsonObject1.getString("DepositeAmount");
-                        JoiningDate = jsonObject1.getString("JoiningDate");
-                        OpeningBalance = jsonObject1.getString("OpeningBalance");
-                        Message = jsonObject1.getString("Message");
-                        Otherpersonname = jsonObject1.getString("Otherpersonname");
-                        Paidby1 = jsonObject1.getString("Paidby");
-                        Status = jsonObject1.getString("Status");
-                        TransactionID = jsonObject1.getString("TransactionID");
-                        VocherNumber1 = jsonObject1.getString("VocherNumber");
+                        for (int i=0;i< jsonArray.length();i++){
 
-                    }
+                            JSONObject jsonObject1 = jsonArray.getJSONObject(0);
 
-                    if (Status.equals("1")){
+                            AccountNo = jsonObject1.getString("AccountNo");
+                            AgentCode = jsonObject1.getString("AgentCode");
+                            AmounttoText = jsonObject1.getString("AmounttoText");
+                            ApplicantName = jsonObject1.getString("ApplicantName");
+                            Balance = jsonObject1.getString("Balance");
+                            Bankname = jsonObject1.getString("Bankname");
+                            Chequenumber = jsonObject1.getString("Chequenumber");
+                            Contactnumber = jsonObject1.getString("Contactnumber");
+                            DepositeAmount = jsonObject1.getString("DepositeAmount");
+                            JoiningDate = jsonObject1.getString("JoiningDate");
+                            OpeningBalance = jsonObject1.getString("OpeningBalance");
+                            Message = jsonObject1.getString("Message");
+                            Otherpersonname = jsonObject1.getString("Otherpersonname");
+                            Paidby1 = jsonObject1.getString("Paidby");
+                            Status = jsonObject1.getString("Status");
+                            TransactionID = jsonObject1.getString("TransactionID");
+                            VocherNumber1 = jsonObject1.getString("VocherNumber");
 
-                        Toast.makeText(getActivity(), Message, Toast.LENGTH_SHORT).show();
+                        }
 
-                        if (VocherNumber1.equals("")){
+                        if (Status.equals("1")){
 
-                            Toast.makeText(getActivity(), "VocherNumber Not Provide To print", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), Message, Toast.LENGTH_SHORT).show();
 
-                            edit_Date.setText("");
-                            edit_AccountNo.setText("");
-                            edit_VocherNumber.setText("");
-                            edit_DepositAmount.setText("");
+                            if (VocherNumber1.equals("")){
+
+                                Toast.makeText(getActivity(), "VocherNumber Not Provide To print", Toast.LENGTH_SHORT).show();
+
+                                edit_Date.setText("");
+                                edit_AccountNo.setText("");
+                                edit_VocherNumber.setText("");
+                                edit_DepositAmount.setText("");
+
+                            }else{
+
+                                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                                PrintDocument printDocument = new PrintDocument();
+                                Bundle bundle=new Bundle();
+                                bundle.putString("VocherNumber", VocherNumber);
+                                bundle.putString("Youkey", "CollectAmount");
+                                printDocument.setArguments(bundle);
+                                fragmentTransaction.replace(R.id.nav_host_fragment,printDocument);
+                                fragmentTransaction.addToBackStack(null);
+                                fragmentTransaction.commit();
+
+                                edit_Date.setText("");
+                                edit_AccountNo.setText("");
+                                edit_VocherNumber.setText("");
+                                edit_DepositAmount.setText("");
+                            }
+
+
 
                         }else{
 
-                            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                            PrintDocument printDocument = new PrintDocument();
-                            Bundle bundle=new Bundle();
-                            bundle.putString("VocherNumber", VocherNumber);
-                            bundle.putString("Youkey", "CollectAmount");
-                            printDocument.setArguments(bundle);
-                            fragmentTransaction.replace(R.id.nav_host_fragment,printDocument);
-                            fragmentTransaction.addToBackStack(null);
-                            fragmentTransaction.commit();
-
-                            edit_Date.setText("");
-                            edit_AccountNo.setText("");
-                            edit_VocherNumber.setText("");
-                            edit_DepositAmount.setText("");
+                            Toast.makeText(getActivity(), Message, Toast.LENGTH_SHORT).show();
                         }
-
-
-
                     }else{
 
-                        Toast.makeText(getActivity(), Message, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Data Not Found", Toast.LENGTH_SHORT).show();
                     }
+
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }

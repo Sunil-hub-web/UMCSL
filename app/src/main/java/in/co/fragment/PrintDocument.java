@@ -238,6 +238,7 @@ public class PrintDocument extends Fragment {
                     ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.BLUETOOTH}, PERMISSION_BLUETOOTH);
                 }
                 else {
+                    Toast.makeText(getActivity(), "Printdetails ", Toast.LENGTH_SHORT).show();
                     BluetoothConnection connection = BluetoothPrintersConnections.selectFirstPaired();
                     if (connection != null) {
                         EscPosPrinter printer = new EscPosPrinter(connection, 203, 48f, 32);

@@ -3,17 +3,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/tollbar"></include>
-
-    <androidx.recyclerview.widget.RecyclerView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"
-        android:layout_marginTop="@dimen/ten"
-        android:id="@+id/recyclerAssignReport">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/tollbar"></include>
+
+        <LinearLayout
+            android:id="@+id/serach"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/sixty"
+            android:layout_marginTop="@dimen/five"
+            android:elevation="5dp">
+
+            <EditText
+                android:id="@+id/serachProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/deshbord_bg"
+                android:layout_margin="@dimen/five"
+                android:padding="@dimen/twelve"
+                android:drawablePadding="@dimen/fifteen"
+                android:hint="Serach Account"
+                android:drawableLeft="@drawable/loupe">
+
+            </EditText>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar"
+            android:layout_marginTop="@dimen/ten"
+            android:id="@+id/recyclerAssignReport">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+
+
 
 </RelativeLayout>

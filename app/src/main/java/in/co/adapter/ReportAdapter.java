@@ -3,6 +3,7 @@ package in.co.adapter;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +34,7 @@ import java.util.ArrayList;
 
 import in.co.extra.Appurl;
 import in.co.fragment.PrintDocument;
+import in.co.modelclass.AssignCustomer_ModelClass;
 import in.co.modelclass.Report_ModelClass;
 import in.co.umcsl.R;
 
@@ -40,11 +42,14 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder
 
     Context context;
     ArrayList<Report_ModelClass> report;
+    ArrayList<Report_ModelClass> sellProduct;
 
     public ReportAdapter(ArrayList<Report_ModelClass> report, FragmentActivity activity) {
 
         this.context = activity;
         this.report = report;
+        this.sellProduct = new ArrayList<>();
+        this.sellProduct.addAll(report);
 
     }
 
@@ -67,7 +72,7 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder
          holder.text_UserName.setText(rep.getUName());
          holder.text_BalanceAmount.setText("Rs. "+rep.getBalanceAmount());
 
-       /*  holder.printfile.setOnClickListener(new View.OnClickListener() {
+         holder.printfile.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
 
@@ -90,7 +95,7 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder
                  }
 
              }
-         });*/
+         });
 
     }
 
@@ -110,8 +115,32 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder
             text_AccountNo = itemView.findViewById(R.id.text_AccountNo);
             text_CollectAmount = itemView.findViewById(R.id.text_CollectAmount);
             text_BalanceAmount = itemView.findViewById(R.id.text_BalanceAmount);
-           // printfile = itemView.findViewById(R.id.printfile);
+            printfile = itemView.findViewById(R.id.printfile);
             text_UserName = itemView.findViewById(R.id.text_UserName);
         }
+    }
+
+    public void filter(CharSequence charSequence){
+
+        ArrayList<Report_ModelClass> tempArrayList = new ArrayList<Report_ModelClass>();
+
+        if(!TextUtils.isEmpty(charSequence)){
+
+            for(Report_ModelClass item : report){
+
+                if(item.getAccountNo().contains((charSequence))){
+                    tempArrayList.add(item);
+                }
+            }
+
+        }else{
+
+            report.addAll(sellProduct);
+        }
+
+        report.clear();
+        report.addAll(tempArrayList);
+        notifyDataSetChanged();
+        tempArrayList.clear();
     }
 }

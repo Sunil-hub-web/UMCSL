@@ -3,6 +3,8 @@ package in.co.fragment;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -58,8 +61,10 @@ public class ReportFragment extends Fragment {
     DatePickerDialog.OnDateSetListener setListener;
     SessionManager sessionManager;
     ImageView logout_bar_img;
-
     TextView totalPrint;
+    EditText serachProduct;
+    Bundle arguments;
+    LinearLayout linserach;
 
     @Nullable
     @Override
@@ -74,6 +79,8 @@ public class ReportFragment extends Fragment {
         edit_FromDate = view.findViewById(R.id.edit_FromDate);
         logout_bar_img = view.findViewById(R.id.logout_bar_img);
         totalPrint = view.findViewById(R.id.totalPrint);
+        serachProduct = view.findViewById(R.id.serachProduct);
+        linserach = view.findViewById(R.id.linserach);
 
         TextView name_text = view.findViewById(R.id.name_text);
 
@@ -84,14 +91,14 @@ public class ReportFragment extends Fragment {
         sessionManager = new SessionManager(getContext());
         userId = sessionManager.getUserID();
 
-        Bundle arguments = getArguments();
+        arguments = getArguments();
 
-        if (arguments != null) {
-
-            DateofCollection = arguments.get("DateofCollection").toString();
-            getReport(userId,DateofCollection);
-            edit_FromDate.setText(DateofCollection);
-        }
+//        if (arguments != null) {
+//
+//            DateofCollection = arguments.get("DateofCollection").toString();
+//            getReport(userId,DateofCollection);
+//            edit_FromDate.setText(DateofCollection);
+//        }
 
         edit_FromDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -180,6 +187,33 @@ public class ReportFragment extends Fragment {
             }
         });
 
+        serachProduct.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (serachProduct.getText().toString().trim().equals("")){
+
+                    getReport(userId,date);
+                    edit_FromDate.setText("");
+
+                }else{
+
+                    reportAdapter.filter(s);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
         return view;
     }
 
@@ -206,8 +240,9 @@ public class ReportFragment extends Fragment {
                 date = fDate+"/"+fmonth+"/"+year;
                 //String date = year+"-"+month+"-"+day;
                 edit_FromDate.setText(date);
-
+                linserach.setVisibility(View.VISIBLE);
                 getReport(userId,date);
+
                 //getReport("10","01/04/2023");
 
             }
@@ -270,30 +305,41 @@ public class ReportFragment extends Fragment {
 
                     report.clear();
 
-                    for (int i=0;i<jsonArray.length();i++){
+                    if (jsonArray.length() != 0){
 
-                        JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+                        for (int i=0;i<jsonArray.length();i++){
 
-                        String AccountNumber = jsonObject1.getString("AccountNumber");
-                        String Active = jsonObject1.getString("Active");
-                        String AgentId = jsonObject1.getString("AgentId");
-                        String Balance = jsonObject1.getString("Balance");
-                        String CreatedDate = jsonObject1.getString("CreatedDate");
-                        String DepositAmount = jsonObject1.getString("DepositAmount");
-                        String Message = jsonObject1.getString("Message");
-                        String Status = jsonObject1.getString("Status");
-                        String UName = jsonObject1.getString("UName");
-                        String VocherNumber = jsonObject1.getString("VocherNumber");
+                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
 
-                        report.add(new Report_ModelClass(CreatedDate,"",AccountNumber,DepositAmount,Balance,VocherNumber,UName));
+                            String AccountNumber = jsonObject1.getString("AccountNumber");
+                            String Active = jsonObject1.getString("Active");
+                            String AgentId = jsonObject1.getString("AgentId");
+                            String Balance = jsonObject1.getString("Balance");
+                            String CreatedDate = jsonObject1.getString("CreatedDate");
+                            String DepositAmount = jsonObject1.getString("DepositAmount");
+                            String Message = jsonObject1.getString("Message");
+                            String Status = jsonObject1.getString("Status");
+                            String UName = jsonObject1.getString("UName");
+                            String VocherNumber = jsonObject1.getString("VocherNumber");
 
+                            report.add(new Report_ModelClass(CreatedDate,"",AccountNumber,DepositAmount,Balance,VocherNumber,UName));
+
+                        }
+
+                        linearLayoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
+                        reportAdapter = new ReportAdapter(report,getActivity());
+                        recyclerReport.setLayoutManager(linearLayoutManager);
+                        recyclerReport.setHasFixedSize(true);
+                        recyclerReport.setAdapter(reportAdapter);
+
+                        serachProduct.setVisibility(View.VISIBLE);
+
+                    }else{
+
+                        serachProduct.setVisibility(View.GONE);
                     }
 
-                    linearLayoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
-                    reportAdapter = new ReportAdapter(report,getActivity());
-                    recyclerReport.setLayoutManager(linearLayoutManager);
-                    recyclerReport.setHasFixedSize(true);
-                    recyclerReport.setAdapter(reportAdapter);
+
 
                 } catch (JSONException e) {
                     throw new RuntimeException(e);

@@ -624,6 +624,12 @@ public class AccountCreationFragment extends Fragment {
                     edit_FatherHusbandName.setText("");
                    // edit_Status.setText("");
                     edit_Address.setText("");
+                    edit_ContactNo.setText("");
+                    edit_Gender.setText("");
+                    edit_DepositeAmt.setText("");
+                    edit_NomineeName1.setText("");
+                    edit_Relation.setText("");
+
                 }
 
 

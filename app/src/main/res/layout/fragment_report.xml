@@ -4,70 +4,100 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/tollbar"></include>
-
     <LinearLayout
-        android:id="@+id/lin_datefromto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="2"
-        android:layout_below="@+id/toolbar"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/FromDate"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.7"
-            android:layout_margin="@dimen/five"
-            android:hint="Select From Date"
-            app:boxStrokeColor="@color/back2"
-            app:hintTextColor="@color/back2">
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/tollbar"></include>
+
+        <LinearLayout
+            android:id="@+id/linserach"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/sixty"
+            android:layout_marginTop="@dimen/five"
+            android:elevation="5dp"
+            android:visibility="gone">
 
             <EditText
-                android:id="@+id/edit_FromDate"
+                android:id="@+id/serachProduct"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/deshbord_bg"
+                android:layout_margin="@dimen/five"
+                android:padding="@dimen/twelve"
+                android:drawablePadding="@dimen/fifteen"
+                android:hint="Serach Account"
+                android:drawableLeft="@drawable/loupe">
+
+            </EditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lin_datefromto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:layout_below="@+id/toolbar"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/FromDate"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.7"
+                android:layout_margin="@dimen/five"
+                android:hint="Select From Date"
+                app:boxStrokeColor="@color/back2"
+                app:hintTextColor="@color/back2">
+
+                <EditText
+                    android:id="@+id/edit_FromDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/forty_five"
+                    android:cursorVisible="false"
+                    android:drawableRight="@drawable/calendar"
+                    android:focusable="false"
+                    android:inputType="number"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/textsize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/totalPrint"
+                android:layout_width="@dimen/eighty"
                 android:layout_height="@dimen/forty_five"
-                android:cursorVisible="false"
-                android:drawableRight="@drawable/calendar"
-                android:focusable="false"
-                android:inputType="number"
-                android:padding="@dimen/ten"
-                android:textColor="@color/textColor"
-                android:textSize="@dimen/textsize" />
+                android:layout_weight="0.3"
+                android:text="Total Print"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:layout_margin="@dimen/five"
+                android:background="@drawable/button_bg"
+                android:textSize="@dimen/textsize"
+                android:backgroundTint="@color/blue"
+                android:padding="@dimen/five">
 
-        </com.google.android.material.textfield.TextInputLayout>
+            </TextView>
 
-        <TextView
-            android:id="@+id/totalPrint"
-            android:layout_width="@dimen/eighty"
-            android:layout_height="@dimen/forty_five"
-            android:layout_weight="0.3"
-            android:text="Total Print"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:layout_margin="@dimen/five"
-            android:background="@drawable/button_bg"
-            android:textSize="@dimen/textsize"
-            android:backgroundTint="@color/blue"
-            android:padding="@dimen/five">
+        </LinearLayout>
 
-        </TextView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lin_datefromto"
+            android:layout_marginTop="@dimen/ten"
+            android:id="@+id/recyclerReport">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
     </LinearLayout>
 
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/lin_datefromto"
-        android:layout_marginTop="@dimen/ten"
-        android:id="@+id/recyclerReport">
-
-    </androidx.recyclerview.widget.RecyclerView>
 
 </RelativeLayout>
