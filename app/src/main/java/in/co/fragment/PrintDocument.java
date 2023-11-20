@@ -1,9 +1,12 @@
 package in.co.fragment;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,13 +30,21 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.dantsu.escposprinter.EscPosPrinter;
+import com.dantsu.escposprinter.connection.DeviceConnection;
 import com.dantsu.escposprinter.connection.bluetooth.BluetoothConnection;
 import com.dantsu.escposprinter.connection.bluetooth.BluetoothPrintersConnections;
+import com.dantsu.escposprinter.textparser.PrinterTextParserImg;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import in.co.async.AsyncBluetoothEscPosPrint;
+import in.co.async.AsyncEscPosPrint;
+import in.co.async.AsyncEscPosPrinter;
 import in.co.extra.Appurl;
 import in.co.umcsl.DeshBoard;
 import in.co.umcsl.R;
@@ -41,21 +52,21 @@ import in.co.umcsl.R;
 public class PrintDocument extends Fragment {
 
     Button btn_Print, btn_periviousPage;
-
     public static final int PERMISSION_BLUETOOTH = 1;
 
-    String date, time, AccountNo, Balance, DepositeAmount, Message, Status, TransactionID, AgentCode, AmounttoText,
-            ApplicantName, Bankname, Chequenumber, Contactnumber, JoiningDate, OpeningBalance, Otherpersonname, Paidby,
-            VocherNumber, vocherNumber, CollectionDate, Youkey;
+    String date, time, AccountNo, Balance, DepositeAmount, Message, Status, TransactionID, AgentCode, AmounttoText, ApplicantName, Bankname, Chequenumber, Contactnumber, JoiningDate, OpeningBalance, Otherpersonname, Paidby, VocherNumber, vocherNumber, CollectionDate, Youkey;
 
-    TextView text_Branch, text_MSA, text_DateTime, text_Name, text_AccNo, text_Type, text_ACOpenDate, text_CustomerCode, text_TrxnNo,
-            text_OpngBalance, text_RcvdAmount, text_showWrite, text_ClosingBalance;
+    TextView text_Branch, text_MSA, text_DateTime, text_Name, text_AccNo, text_Type, text_ACOpenDate, text_CustomerCode, text_TrxnNo, text_OpngBalance, text_RcvdAmount, text_showWrite, text_ClosingBalance;
+
+    public OnBluetoothPermissionsGranted onBluetoothPermissionsGranted;
+    public static final int PERMISSION_BLUETOOTH_ADMIN = 2;
+    public static final int PERMISSION_BLUETOOTH_CONNECT = 3;
+    public static final int PERMISSION_BLUETOOTH_SCAN = 4;
+    BluetoothConnection selectedDevice;
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_print, container, false);
 
@@ -99,15 +110,18 @@ public class PrintDocument extends Fragment {
             @Override
             public void onClick(View v) {
 
-               /* FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 HomeFragment homeFragment = new HomeFragment();
                 fragmentTransaction.replace(R.id.nav_host_fragment, homeFragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
 
-                DeshBoard.chipNavigationBar.setItemSelected(R.id.home, false);*/
+                DeshBoard.chipNavigationBar.setItemSelected(R.id.home, false);
+
 
                 doPrint();
+
+               // printBluetooth();
             }
         });
 
@@ -141,6 +155,7 @@ public class PrintDocument extends Fragment {
 
             }
         });
+
         return view;
     }
 
@@ -236,48 +251,121 @@ public class PrintDocument extends Fragment {
             if (getContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)) {
                 if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.BLUETOOTH}, PERMISSION_BLUETOOTH);
-                }
-                else {
-                    Toast.makeText(getActivity(), "Printdetails ", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Toast.makeText(getActivity(), "Printdetails ", Toast.LENGTH_SHORT).show();
                     BluetoothConnection connection = BluetoothPrintersConnections.selectFirstPaired();
                     if (connection != null) {
                         EscPosPrinter printer = new EscPosPrinter(connection, 203, 48f, 32);
-                        final String text =
-                                "[C] <b>UMCSL" + "</b>\n" +
-                                        "[C] <b>Chandanpur</b>" + "\n" +
+                        final String text = "[C] <b>UMCSL" + "</b>\n" + "[C] <b>Chandanpur</b>" + "\n" +
 
-                                        "[C]================================\n" +
+                                "[C]================================\n" +
 
-                                        "[L]<b> Branch [R]" + "Chandanpur" + "</b>\n" +
-                                        "[L]<b> MSA    [R]" + AgentCode + "</b>\n" +
-                                        "[L]<b> Date [R]" + CollectionDate + "</b>\n" +
-                                        "[L]<b> Name   [R] " + ApplicantName + "</b>\n" +
-                                        "[L]<b> Ac/no. [R]" + AccountNo + "</b>\n" +
-                                        "[L]<b> Type   [R]" + "Deposit" + "</b>\n" +
-                                        "[L]<b> A/C Open Date[R]" + JoiningDate + "</b>\n" +
-                                        "[L]<b> Trxn No[R]" + VocherNumber + "</b>\n" +
-                                        "[L]<b> Opng Bal[R]" + OpeningBalance + "</b>\n" +
-                                        "[L]<b> Recev Amount[R]" + DepositeAmount + "</b>\n" +
-                                        "[L]<b> Closing Bal[R]" + Balance + "</b>\n" +
-                                        "[L]\n" +
-                                        "[C]--------------------------------\n" +
-                                        "[C]--------------------------------\n" +
-                                        "[C]<b>" + AmounttoText + "</b>\n" +
-                                        "[C]<b> Thanks You" + "</b>\n" +
-                                        "[L]\n";
+                                "[L]<b> Branch [R]" + "Chandanpur" + "</b>\n" + "[L]<b> MSA    [R]" + AgentCode +
+                                "</b>\n" + "[L]<b> Date [R]" + CollectionDate + "</b>\n" +
+                                "[L]<b> Name   [R] " + ApplicantName + "</b>\n" +
+                                "[L]<b> Ac/no. [R]" + AccountNo + "</b>\n" +
+                                "[L]<b> Type   [R]" + "Deposit" + "</b>\n" +
+                                "[L]<b> A/C Open Date[R]" + JoiningDate + "</b>\n" +
+                                "[L]<b> Trxn No[R]" + VocherNumber + "</b>\n" +
+                                "[L]<b> Opng Bal[R]" + OpeningBalance + "</b>\n" +
+                                "[L]<b> Recev Amount[R]" + DepositeAmount + "</b>\n" +
+                                "[L]<b> Closing Bal[R]" + Balance + "</b>\n" + "[L]\n" +
+                                "[C]--------------------------------\n" +
+                                "[C]--------------------------------\n" +
+                                "[C]<b>" + AmounttoText + "</b>\n" +
+                                "[C]<b> Thanks You" + "</b>\n" + "[L]\n"+
+                                "[C]                                  \n"+
+                                "[C]                                  \n";
 
                         printer.printFormattedText(text);
                     } else {
                         Toast.makeText(getActivity(), "No printer was connected!", Toast.LENGTH_SHORT).show();
                     }
                 }
-            }else{
+            } else {
 
-                Toast.makeText(getActivity(),"ble_not_supported", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "ble_not_supported", Toast.LENGTH_SHORT).show();
             }
 
         } catch (Exception e) {
             Log.e("APP", "Can't print", e);
         }
     }
+
+    public AsyncEscPosPrinter getAsyncEscPosPrinter(DeviceConnection printerConnection) {
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("'on' yyyy-MM-dd 'at' HH:mm:ss");
+        AsyncEscPosPrinter printer = new AsyncEscPosPrinter(printerConnection, 203, 48f, 32);
+        return printer.addTextToPrint(
+                "[C] <b>UMCSL" + "</b>\n" + "[C] <b>Chandanpur</b>" + "\n" +
+
+                "[C]================================\n" +
+
+                "[L]<b> Branch [R]" + "Chandanpur" + "</b>\n" +
+                "[L]<b> MSA    [R]" + AgentCode + "</b>\n" +
+                "[L]<b> Date [R]" + CollectionDate + "</b>\n" +
+                "[L]<b> Name   [R] " + ApplicantName + "</b>\n" +
+                "[L]<b> Ac/no. [R]" + AccountNo + "</b>\n" +
+                "[L]<b> Type   [R]" + "Deposit" + "</b>\n" +
+                "[L]<b> A/C Open Date[R]" + JoiningDate + "</b>\n" +
+                "[L]<b> Trxn No[R]" + VocherNumber + "</b>\n" +
+                "[L]<b> Opng Bal[R]" + OpeningBalance + "</b>\n" +
+                "[L]<b> Recev Amount[R]" + DepositeAmount + "</b>\n" +
+                "[L]<b> Closing Bal[R]" + Balance + "</b>\n" + "[L]\n" +
+                "[C]--------------------------------\n" +
+                "[C]--------------------------------\n" +
+                "[C]<b>" + AmounttoText + "</b>\n" +
+                "[C]<b> Thanks You" + "</b>\n" + "[L]\n" );
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            switch (requestCode) {
+                case PrintDocument.PERMISSION_BLUETOOTH:
+                case PrintDocument.PERMISSION_BLUETOOTH_ADMIN:
+                case PrintDocument.PERMISSION_BLUETOOTH_CONNECT:
+                case PrintDocument.PERMISSION_BLUETOOTH_SCAN:
+                    this.checkBluetoothPermissions(this.onBluetoothPermissionsGranted);
+                    break;
+            }
+        }
+    }
+
+    public void checkBluetoothPermissions(OnBluetoothPermissionsGranted onBluetoothPermissionsGranted) {
+        this.onBluetoothPermissionsGranted = onBluetoothPermissionsGranted;
+        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.S && ContextCompat.checkSelfPermission(getContext(), Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.BLUETOOTH}, PrintDocument.PERMISSION_BLUETOOTH);
+        } else if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.S && ContextCompat.checkSelfPermission(getContext(), Manifest.permission.BLUETOOTH_ADMIN) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.BLUETOOTH_ADMIN}, PrintDocument.PERMISSION_BLUETOOTH_ADMIN);
+        } else if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S && ContextCompat.checkSelfPermission(getContext(), Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.BLUETOOTH_CONNECT}, PrintDocument.PERMISSION_BLUETOOTH_CONNECT);
+        } else if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S && ContextCompat.checkSelfPermission(getContext(), Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.BLUETOOTH_SCAN}, PrintDocument.PERMISSION_BLUETOOTH_SCAN);
+        } else {
+            this.onBluetoothPermissionsGranted.onPermissionsGranted();
+        }
+    }
+
+    public void printBluetooth() {
+        this.checkBluetoothPermissions(() -> {
+            new AsyncBluetoothEscPosPrint(getContext(), new AsyncEscPosPrint.OnPrintFinished() {
+                @Override
+                public void onError(AsyncEscPosPrinter asyncEscPosPrinter, int codeException) {
+                    Log.e("Async.OnPrintFinished", "AsyncEscPosPrint.OnPrintFinished : An error occurred !");
+                }
+
+                @Override
+                public void onSuccess(AsyncEscPosPrinter asyncEscPosPrinter) {
+                    Log.i("Async.OnPrintFinished", "AsyncEscPosPrint.OnPrintFinished : Print is finished !");
+                }
+            }).execute(this.getAsyncEscPosPrinter(selectedDevice));
+        });
+    }
+
+    public interface OnBluetoothPermissionsGranted {
+        void onPermissionsGranted();
+    }
+
+
 }

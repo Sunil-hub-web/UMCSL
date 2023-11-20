@@ -79,6 +79,7 @@ public class Report_ModelClass {
                 "Ac/no. " + accountNo + "\n" +
                 "Collect Amount  " + collectAmount + "\n" +
                 "Balance Amount  " + balanceAmount + "\n"+
-                " ================================ \n";
+                " ================================ \n"+
+                "                                   \n";
     }
 }

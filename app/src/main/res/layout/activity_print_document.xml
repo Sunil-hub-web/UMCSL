@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashScreen">
+    tools:context=".PrintDocumentActivity">
 
-    <ImageView
-        android:id="@+id/imageview"
-        android:layout_width="@dimen/two_hundred"
-        android:layout_height="@dimen/two_hundred"
-        android:layout_centerInParent="true"
-        android:src="@drawable/logoimage">
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        android:text="printdocument"
+        android:id="@+id/printdocument">
 
-    </ImageView>
+    </Button>
 
 </RelativeLayout>
