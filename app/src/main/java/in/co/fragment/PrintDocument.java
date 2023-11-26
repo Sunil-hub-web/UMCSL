@@ -110,18 +110,18 @@ public class PrintDocument extends Fragment {
             @Override
             public void onClick(View v) {
 
-                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                HomeFragment homeFragment = new HomeFragment();
-                fragmentTransaction.replace(R.id.nav_host_fragment, homeFragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+//                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+//                HomeFragment homeFragment = new HomeFragment();
+//                fragmentTransaction.replace(R.id.nav_host_fragment, homeFragment);
+//                fragmentTransaction.addToBackStack(null);
+//                fragmentTransaction.commit();
+//
+//                DeshBoard.chipNavigationBar.setItemSelected(R.id.home, false);
 
-                DeshBoard.chipNavigationBar.setItemSelected(R.id.home, false);
 
+      //          doPrint();
 
-                doPrint();
-
-               // printBluetooth();
+                printBluetooth();
             }
         });
 
